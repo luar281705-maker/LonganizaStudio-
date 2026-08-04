@@ -102,6 +102,7 @@ const modulos = {
 
 inicio:`
 
+
 <h2>
 🎬 Bienvenido a Longaniza Studio
 </h2>
@@ -111,6 +112,94 @@ inicio:`
 Centro de producción de series animadas.
 </p>
 
+
+`,
+
+personajes:`
+
+<h2>
+🎭 Personajes
+</h2>
+
+<p>
+Módulo en desarrollo.
+</p>
+
+<p>
+Aquí se crearán personajes,
+características físicas,
+personalidad y evolución.
+</p>
+
+`,
+
+
+
+historias:`
+
+<h2>
+📝 Historias
+</h2>
+
+<p>
+Módulo en desarrollo.
+</p>
+
+`,
+
+
+
+escenarios:`
+
+<h2>
+🏠 Escenarios
+</h2>
+
+<p>
+Módulo en desarrollo.
+</p>
+
+`,
+
+
+
+episodios:`
+
+<h2>
+🎞 Episodios
+</h2>
+
+<p>
+Módulo en desarrollo.
+</p>
+
+`,
+
+
+
+audio:`
+
+<h2>
+🎙 Audio
+</h2>
+
+<p>
+Módulo en desarrollo.
+</p>
+
+`,
+
+
+
+configuracion:`
+
+<h2>
+⚙ Configuración
+</h2>
+
+<p>
+Módulo en desarrollo.
+</p>
 
 `,
 
@@ -766,31 +855,88 @@ NAVEGACIÓN
 function iniciarNavegacion(){
 
 
-document
-.getElementById(
-"btnInicio"
-)
-.onclick =
+const botones = {
 
-()=>cambiarModulo(
-"inicio"
+
+    btnInicio:
+    "inicio",
+
+
+    btnProyectos:
+    "proyectos",
+
+
+    btnPersonajes:
+    "personajes",
+
+
+    btnHistorias:
+    "historias",
+
+
+    btnEscenarios:
+    "escenarios",
+
+
+    btnEpisodios:
+    "episodios",
+
+
+    btnAudio:
+    "audio",
+
+
+    btnConfiguracion:
+    "configuracion"
+
+
+};
+
+
+
+
+Object.keys(botones).forEach(
+
+
+id=>{
+
+
+const boton =
+
+document.getElementById(id);
+
+
+
+if(boton){
+
+
+boton.onclick =
+
+()=>{
+
+
+cambiarModulo(
+botones[id]
 );
 
 
 
-document
-.getElementById(
-"btnProyectos"
-)
-.onclick =
-
-()=>cambiarModulo(
-"proyectos"
-);
+};
 
 
 }
 
+
+
+}
+
+
+
+);
+
+
+
+}
 /*
 ========================================
 ARRANQUE DEL SISTEMA
