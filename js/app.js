@@ -730,8 +730,8 @@ function cambiarModulo(nombre){
 
 const contenido =
 
-document.querySelector(
-".contenido"
+document.getElementById(
+"contenido"
 );
 
 
@@ -766,26 +766,30 @@ NAVEGACIÓN
 function iniciarNavegacion(){
 
 
+document
+.getElementById(
+"btnInicio"
+)
+.onclick =
 
-const botones =
-
-document.querySelectorAll(
-".menu button"
+()=>cambiarModulo(
+"inicio"
 );
 
 
 
-
-botones[0].onclick =
+document
+.getElementById(
+"btnProyectos"
+)
+.onclick =
 
 ()=>cambiarModulo(
 "proyectos"
 );
 
 
-
 }
-
 
 /*
 ========================================
