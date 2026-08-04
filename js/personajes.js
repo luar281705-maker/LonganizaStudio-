@@ -66,17 +66,11 @@ document.getElementById(
 "contenido"
 );
 
-
-
 contenido.innerHTML = `
-
 
 <h2>
 🎭 Editor de Personajes
 </h2>
-
-
-
 
 <div class="panel">
 
@@ -90,8 +84,6 @@ Información básica
 id="nombrePersonaje"
 placeholder="Nombre del personaje"
 >
-
-
 
 <select id="tipoPersonaje">
 
@@ -131,9 +123,6 @@ placeholder="Descripción general"
 </div>
 
 
-
-
-
 <div class="panel">
 
 
@@ -147,7 +136,6 @@ id="edadPersonaje"
 placeholder="Edad"
 >
 
-
 <input
 id="cabelloPersonaje"
 placeholder="Cabello"
@@ -158,7 +146,6 @@ placeholder="Cabello"
 id="colorCabelloPersonaje"
 placeholder="Color de cabello"
 >
-
 
 
 <select id="lentesPersonaje">
@@ -189,11 +176,6 @@ placeholder="Accesorios"
 
 
 </div>
-
-
-
-
-
 
 <div class="panel">
 
