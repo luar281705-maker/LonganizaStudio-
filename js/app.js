@@ -14,9 +14,6 @@ console.log(
 );
 
 
-
-
-
 /*
 ========================================
 BASE DEL SISTEMA
@@ -44,11 +41,6 @@ const sistema = {
 
 
 };
-
-
-
-
-
 
 
 /*
@@ -81,9 +73,6 @@ function cargarDatos(){
 }
 
 
-
-
-
 function guardarDatos(){
 
 
@@ -99,10 +88,6 @@ function guardarDatos(){
 
 
 }
-
-
-
-
 
 
 
@@ -129,9 +114,6 @@ Centro de producción de series animadas.
 `,
 
 
-
-
-
 proyectos:`
 
 <h2>
@@ -146,7 +128,6 @@ proyectos:`
 id="nombreProyecto"
 placeholder="Nombre de la serie"
 />
-
 
 
 <select id="tipoProyecto">
@@ -164,7 +145,6 @@ Proyecto Comercial
 </option>
 
 </select>
-
 
 
 <button onclick="crearProyecto()">
