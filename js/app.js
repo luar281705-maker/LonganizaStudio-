@@ -2,10 +2,8 @@
 ========================================
 LONGANIZA STUDIO
 Versión 0.1.0
-
 Módulo:
 Proyectos - Temporadas - Episodios
-
 ========================================
 */
 
@@ -15,15 +13,11 @@ console.log(
 );
 
 
-
-
-
 /*
 ========================================
 OBJETO PRINCIPAL DEL SISTEMA
 ========================================
 */
-
 
 const sistema = {
 
@@ -45,11 +39,6 @@ const sistema = {
 
 
 };
-
-
-
-
-
 
 
 /*
@@ -84,9 +73,6 @@ function cargarDatos(){
 }
 
 
-
-
-
 function guardarDatos(){
 
 
@@ -102,13 +88,6 @@ function guardarDatos(){
 
 
 }
-
-
-
-
-
-
-
 
 /*
 ========================================
@@ -135,18 +114,11 @@ Centro de producción de series animadas.
 
 `,
 
-
-
-
-
-
 proyectos:`
 
 <h2>
 📁 Gestión de Proyectos
 </h2>
-
-
 
 <input
 
@@ -155,8 +127,6 @@ id="nombreProyecto"
 placeholder="Nombre de la serie"
 
 >
-
-
 
 <select id="tipoProyecto">
 
@@ -220,12 +190,6 @@ detalle:`
 
 
 };
-
-
-
-
-
-
 
 
 /*
@@ -341,13 +305,6 @@ mostrarProyectos();
 }
 
 
-
-
-
-
-
-
-
 /*
 ========================================
 LISTAR PROYECTOS
@@ -440,13 +397,6 @@ Abrir
 }
 
 
-
-
-
-
-
-
-
 /*
 ========================================
 ABRIR PROYECTO
@@ -481,13 +431,6 @@ mostrarDetalle();
 }
 
 
-
-
-
-
-
-
-
 /*
 ========================================
 DETALLE DEL PROYECTO
@@ -511,8 +454,6 @@ document.getElementById(
 const proyecto =
 
 sistema.proyectoActivo;
-
-
 
 
 contenedor.innerHTML = `
@@ -571,14 +512,6 @@ mostrarTemporadas();
 
 }
 
-
-
-
-
-
-
-
-
 /*
 ========================================
 TEMPORADAS
@@ -635,14 +568,6 @@ mostrarDetalle();
 
 
 }
-
-
-
-
-
-
-
-
 
 function mostrarTemporadas(){
 
@@ -734,13 +659,6 @@ episodio =>
 }
 
 
-
-
-
-
-
-
-
 /*
 ========================================
 EPISODIOS
@@ -799,13 +717,6 @@ mostrarDetalle();
 }
 
 
-
-
-
-
-
-
-
 /*
 ========================================
 CAMBIO DE MÓDULO
@@ -845,13 +756,6 @@ mostrarProyectos();
 }
 
 
-
-
-
-
-
-
-
 /*
 ========================================
 NAVEGACIÓN
@@ -881,13 +785,6 @@ botones[0].onclick =
 
 
 }
-
-
-
-
-
-
-
 
 
 /*
