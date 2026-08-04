@@ -394,13 +394,6 @@ mostrarProyectos();
 }
 
 
-if(nombre==="personajes"){
-
-mostrarModuloPersonajes();
-
-}
-
-
 /*
 ========================================
 LISTAR PROYECTOS
@@ -839,6 +832,7 @@ modulos[nombre];
 
 
 
+
 if(nombre==="proyectos"){
 
 
@@ -849,8 +843,17 @@ mostrarProyectos();
 
 
 
+if(nombre==="personajes"){
+
+
+mostrarModuloPersonajes();
+
+
 }
 
+
+
+}
 
 /*
 ========================================
