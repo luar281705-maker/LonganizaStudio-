@@ -171,28 +171,161 @@ return;
 
 
 
-const nombre =
+
+const personaje = {
+
+
+
+id:
+
+Date.now(),
+
+
+
+nombre:
 
 document.getElementById(
 "nombrePersonaje"
-).value;
+).value,
 
 
 
-const tipo =
+tipo:
 
 document.getElementById(
 "tipoPersonaje"
-).value;
+).value,
+
+
+
+rol:
+
+document.getElementById(
+"rolPersonaje"
+).value,
+
+
+
+descripcion:
+
+document.getElementById(
+"descripcionPersonaje"
+).value,
 
 
 
 
-if(nombre.trim()===""){
+
+apariencia:{
+
+
+edad:
+
+document.getElementById(
+"edadPersonaje"
+).value,
+
+
+
+cabello:
+
+document.getElementById(
+"cabelloPersonaje"
+).value,
+
+
+
+colorCabello:
+
+document.getElementById(
+"colorCabelloPersonaje"
+).value,
+
+
+
+lentes:
+
+document.getElementById(
+"lentesPersonaje"
+).value,
+
+
+
+ropa:
+
+document.getElementById(
+"ropaPersonaje"
+).value,
+
+
+
+accesorios:
+
+document.getElementById(
+"accesoriosPersonaje"
+).value
+
+
+},
+
+
+
+
+
+personalidad:{
+
+
+caracteristicas:
+
+document.getElementById(
+"caracteristicasPersonaje"
+).value,
+
+
+
+formaHablar:
+
+document.getElementById(
+"formaHablarPersonaje"
+).value,
+
+
+
+gustos:
+
+document.getElementById(
+"gustosPersonaje"
+).value,
+
+
+
+defectos:
+
+document.getElementById(
+"defectosPersonaje"
+).value
+
+
+},
+
+
+
+
+evolucion:[]
+
+
+
+};
+
+
+
+
+
+if(personaje.nombre.trim()===""){
 
 
 alert(
-"Escribe un nombre"
+"Escribe un nombre para el personaje"
 );
 
 
@@ -200,39 +333,6 @@ return;
 
 
 }
-
-
-
-const personaje = {
-
-
-id:
-Date.now(),
-
-
-nombre:
-
-
-nombre,
-
-
-tipo:
-
-
-tipo,
-
-
-apariencia:{},
-
-
-personalidad:{},
-
-
-evolucion:[]
-
-
-};
-
 
 
 
@@ -244,7 +344,9 @@ personaje
 
 
 
+
 guardarDatos();
+
 
 
 
@@ -252,8 +354,13 @@ listarPersonajes();
 
 
 
-}
+alert(
+"Personaje creado correctamente"
+);
 
+
+
+}
 
 
 /*
