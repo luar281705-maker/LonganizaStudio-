@@ -17,7 +17,6 @@ console.log(
 );
 
 
-
 /*
 ========================================
 BASE DE DATOS DE PERSONAJES
@@ -46,8 +45,6 @@ function crearBasePersonajes(){
 
 
 }
-
-
 
 
 /*
@@ -112,8 +109,6 @@ id="rolPersonaje"
 placeholder="Rol dentro de la serie"
 >
 
-
-
 <textarea
 id="descripcionPersonaje"
 placeholder="Descripción general"
@@ -161,13 +156,10 @@ No
 </select>
 
 
-
 <input
 id="ropaPersonaje"
 placeholder="Ropa habitual"
 >
-
-
 
 <input
 id="accesoriosPersonaje"
@@ -220,8 +212,6 @@ placeholder="Defectos"
 </div>
 
 
-
-
 <hr>
 
 
@@ -231,7 +221,6 @@ placeholder="Defectos"
 
 
 `;
-
 
 
 listarPersonajes();
@@ -308,9 +297,6 @@ document.getElementById(
 ).value,
 
 
-
-
-
 apariencia:{
 
 
@@ -364,9 +350,6 @@ document.getElementById(
 },
 
 
-
-
-
 personalidad:{
 
 
@@ -404,16 +387,10 @@ document.getElementById(
 },
 
 
-
-
 evolucion:[]
 
 
-
 };
-
-
-
 
 
 if(personaje.nombre.trim()===""){
@@ -430,19 +407,13 @@ return;
 }
 
 
-
-
 crearBasePersonajes()
 .push(
 personaje
 );
 
 
-
-
 guardarDatos();
-
-
 
 
 listarPersonajes();
