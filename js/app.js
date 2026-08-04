@@ -1,10 +1,11 @@
 /*
 ========================================
 LONGANIZA STUDIO
-Sistema principal
 Versión 0.1.0
+
 Módulo:
-Gestión de Proyectos
+Proyectos - Temporadas - Episodios
+
 ========================================
 */
 
@@ -19,7 +20,7 @@ console.log(
 
 /*
 ========================================
-BASE DEL SISTEMA
+OBJETO PRINCIPAL DEL SISTEMA
 ========================================
 */
 
@@ -35,12 +36,12 @@ const sistema = {
     "0.1.0",
 
 
-    moduloActual:
-    "inicio",
-
-
     proyectos:
-    []
+    [],
+
+
+    proyectoActivo:
+    null
 
 
 };
@@ -53,7 +54,7 @@ const sistema = {
 
 /*
 ========================================
-BASE DE DATOS LOCAL
+ALMACENAMIENTO LOCAL
 ========================================
 */
 
@@ -61,7 +62,8 @@ BASE DE DATOS LOCAL
 function cargarDatos(){
 
 
-    let datos =
+    const datos =
+
     localStorage.getItem(
         "longaniza_proyectos"
     );
@@ -72,6 +74,7 @@ function cargarDatos(){
 
 
         sistema.proyectos =
+
         JSON.parse(datos);
 
 
@@ -106,14 +109,16 @@ function guardarDatos(){
 
 
 
+
 /*
 ========================================
-MÓDULOS
+PLANTILLAS DE PANTALLA
 ========================================
 */
 
 
 const modulos = {
+
 
 
 inicio:`
@@ -122,11 +127,14 @@ inicio:`
 🎬 Bienvenido a Longaniza Studio
 </h2>
 
+
 <p>
 Centro de producción de series animadas.
 </p>
 
+
 `,
+
 
 
 
@@ -139,29 +147,34 @@ proyectos:`
 </h2>
 
 
-<div class="formulario">
-
 
 <input
+
 id="nombreProyecto"
+
 placeholder="Nombre de la serie"
-/>
+
+>
 
 
 
 <select id="tipoProyecto">
 
+
 <option>
 Serie Animada
 </option>
+
 
 <option>
 Cortometraje
 </option>
 
+
 <option>
 Proyecto Comercial
 </option>
+
 
 </select>
 
@@ -174,8 +187,6 @@ Crear Proyecto
 </button>
 
 
-</div>
-
 
 <hr>
 
@@ -185,7 +196,28 @@ Crear Proyecto
 </div>
 
 
+`,
+
+
+
+
+
+detalle:`
+
+<h2>
+📺 Proyecto
+</h2>
+
+
+
+<div id="detalleProyecto">
+
+</div>
+
+
 `
+
+
 
 };
 
@@ -225,7 +257,6 @@ document.getElementById(
 
 
 
-
 if(nombre.trim()===""){
 
 
@@ -238,6 +269,7 @@ return;
 
 
 }
+
 
 
 
@@ -276,6 +308,11 @@ personajes:
 [],
 
 
+escenarios:
+
+[],
+
+
 episodios:
 
 []
@@ -307,496 +344,6 @@ mostrarProyectos();
 
 
 
-/*
-========================================
-MOSTRAR PROYECTOS
-========================================
-*/
-
-
-function mostrarProyectos(){
-
-
-
-const contenedor =
-
-document.getElementById(
-"listaProyectos"
-);
-
-
-
-
-if(!contenedor)
-return;
-
-
-
-
-contenedor.innerHTML="";
-
-
-
-
-
-sistema.proyectos.forEach(
-
-proyecto=>{
-
-
-
-contenedor.innerHTML +=`
-
-
-<div class="tarjeta">
-
-
-<h3>
-
-${proyecto.nombre}
-
-</h3>
-
-
-<p>
-
-Tipo:
-${proyecto.tipo}
-
-</p>
-
-
-<p>
-
-Estado:
-${proyecto.estado}
-
-</p>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-);
-
-
-
-}
-
-
-
-
-
-
-
-/*
-========================================
-CAMBIO DE MÓDULO
-========================================
-*/
-
-
-function cambiarModulo(nombre){
-
-
-const contenido =
-
-document.querySelector(
-".contenido"
-);
-
-
-
-contenido.innerHTML =
-
-modulos[nombre];
-
-
-
-sistema.moduloActual =
-nombre;
-
-
-
-if(nombre==="proyectos"){
-
-
-mostrarProyectos();
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-/*
-========================================
-NAVEGACIÓN
-========================================
-*/
-
-
-function iniciarNavegacion(){
-
-
-const botones =
-
-document.querySelectorAll(
-".menu button"
-);
-
-
-
-
-botones[0].onclick =
-()=>cambiarModulo(
-"proyectos"
-);
-
-
-
-}
-
-
-
-
-
-/*
-========================================
-INICIO
-========================================
-*/
-
-
-window.onload=function(){
-
-
-
-cargarDatos();
-
-
-
-iniciarNavegacion();
-
-
-
-console.log(
-"Sistema preparado"
-);
-
-
-
-};
-/*
-========================================
-LONGANIZA STUDIO
-Versión 0.1.0
-
-Módulo:
-Series - Temporadas - Episodios
-
-========================================
-*/
-
-
-console.log(
-    "Longaniza Studio iniciado"
-);
-
-
-
-const sistema = {
-
-    nombre:
-    "Longaniza Studio",
-
-    version:
-    "0.1.0",
-
-    proyectos: [],
-
-    proyectoActivo:
-    null
-
-};
-
-
-
-
-
-/*
-========================================
-ALMACENAMIENTO
-========================================
-*/
-
-
-function cargarDatos(){
-
-
-    const datos =
-
-    localStorage.getItem(
-        "longaniza_proyectos"
-    );
-
-
-
-    if(datos){
-
-        sistema.proyectos =
-        JSON.parse(datos);
-
-    }
-
-
-}
-
-
-
-
-
-
-function guardarDatos(){
-
-
-    localStorage.setItem(
-
-        "longaniza_proyectos",
-
-        JSON.stringify(
-            sistema.proyectos
-        )
-
-    );
-
-
-}
-
-
-
-
-
-
-
-/*
-========================================
-VISTAS DEL SISTEMA
-========================================
-*/
-
-
-const modulos = {
-
-
-
-
-inicio:`
-
-<h2>
-🎬 Longaniza Studio
-</h2>
-
-
-<p>
-Centro de producción de series animadas.
-</p>
-
-`,
-
-
-
-
-
-proyectos:`
-
-<h2>
-📁 Proyectos
-</h2>
-
-
-<div>
-
-<input
-
-id="nombreProyecto"
-
-placeholder="Nombre de la serie"
-
->
-
-
-<select id="tipoProyecto">
-
-
-<option>
-Serie Animada
-</option>
-
-
-<option>
-Cortometraje
-</option>
-
-
-</select>
-
-
-
-<button onclick="crearProyecto()">
-
-Crear
-
-</button>
-
-
-</div>
-
-
-
-<hr>
-
-
-<div id="listaProyectos">
-
-</div>
-
-
-`,
-
-
-
-
-
-detalle:`
-
-<h2>
-
-📺 Proyecto
-
-</h2>
-
-
-<div id="detalleProyecto">
-
-</div>
-
-
-`
-
-
-
-};
-
-
-
-
-
-
-
-/*
-========================================
-CREAR PROYECTO
-========================================
-*/
-
-
-function crearProyecto(){
-
-
-const nombre =
-
-document.getElementById(
-"nombreProyecto"
-).value;
-
-
-
-const tipo =
-
-document.getElementById(
-"tipoProyecto"
-).value;
-
-
-
-if(nombre.trim()===""){
-
-alert(
-"Escribe un nombre"
-);
-
-return;
-
-}
-
-
-
-const proyecto={
-
-
-id:
-Date.now(),
-
-
-nombre:
-
-
-nombre,
-
-
-tipo:
-
-
-tipo,
-
-
-estado:
-
-"Desarrollo",
-
-
-temporadas:
-
-[]
-
-
-};
-
-
-
-sistema.proyectos.push(
-proyecto
-);
-
-
-
-guardarDatos();
-
-
-
-mostrarProyectos();
-
-
-
-}
-
-
-
 
 
 
@@ -825,7 +372,9 @@ return;
 
 
 
+
 lista.innerHTML="";
+
 
 
 
@@ -835,7 +384,8 @@ sistema.proyectos.forEach(
 proyecto=>{
 
 
-lista.innerHTML +=`
+
+lista.innerHTML += `
 
 
 <div class="tarjeta">
@@ -848,12 +398,21 @@ ${proyecto.nombre}
 </h3>
 
 
-
 <p>
 
+Tipo:
 ${proyecto.tipo}
 
 </p>
+
+
+<p>
+
+Estado:
+${proyecto.estado}
+
+</p>
+
 
 
 <button onclick="abrirProyecto(${proyecto.id})">
@@ -870,12 +429,17 @@ Abrir
 `;
 
 
+
 }
+
 
 );
 
 
+
 }
+
+
 
 
 
@@ -896,9 +460,10 @@ function abrirProyecto(id){
 
 sistema.proyectoActivo =
 
+
 sistema.proyectos.find(
 
-p=>p.id===id
+p => p.id === id
 
 );
 
@@ -914,6 +479,8 @@ mostrarDetalle();
 
 
 }
+
+
 
 
 
@@ -940,9 +507,11 @@ document.getElementById(
 
 
 
-const p =
+
+const proyecto =
 
 sistema.proyectoActivo;
+
 
 
 
@@ -952,15 +521,25 @@ contenedor.innerHTML = `
 
 <h3>
 
-${p.nombre}
+${proyecto.nombre}
 
 </h3>
+
+
+
+<p>
+
+Tipo:
+${proyecto.tipo}
+
+</p>
+
 
 
 <p>
 
 Estado:
-${p.estado}
+${proyecto.estado}
 
 </p>
 
@@ -989,7 +568,10 @@ Nueva Temporada
 mostrarTemporadas();
 
 
+
 }
+
+
 
 
 
@@ -1008,19 +590,21 @@ function crearTemporada(){
 
 
 
-const p =
+const proyecto =
 
 sistema.proyectoActivo;
 
 
 
+
 const numero =
 
-p.temporadas.length + 1;
+proyecto.temporadas.length + 1;
 
 
 
-p.temporadas.push({
+
+proyecto.temporadas.push({
 
 
 id:
@@ -1029,22 +613,30 @@ Date.now(),
 
 nombre:
 
-"Temporada "+numero,
+"Temporada " + numero,
 
 
-episodios:[]
+episodios:
+
+[]
+
 
 });
+
 
 
 
 guardarDatos();
 
 
+
 mostrarDetalle();
 
 
+
 }
+
+
 
 
 
@@ -1064,8 +656,10 @@ document.getElementById(
 
 
 
+
 if(!contenedor)
 return;
+
 
 
 
@@ -1073,13 +667,15 @@ contenedor.innerHTML="";
 
 
 
+
+
 sistema.proyectoActivo.temporadas.forEach(
 
-t=>{
+temporada=>{
+
 
 
 contenedor.innerHTML += `
-
 
 
 <div class="tarjeta">
@@ -1087,29 +683,29 @@ contenedor.innerHTML += `
 
 <h4>
 
-${t.nombre}
+${temporada.nombre}
 
 </h4>
 
 
 
-<button onclick="crearEpisodio(${t.id})">
+<button onclick="crearEpisodio(${temporada.id})">
 
 Nuevo Episodio
 
 </button>
 
 
-<div>
 
+<div>
 
 ${
 
-t.episodios.map(
+temporada.episodios.map(
 
-e=>
+episodio =>
 
-"<p>🎞 "+e.nombre+"</p>"
+"<p>🎞 "+episodio.nombre+"</p>"
 
 ).join("")
 
@@ -1126,7 +722,9 @@ e=>
 `;
 
 
+
 }
+
 
 
 );
@@ -1134,6 +732,8 @@ e=>
 
 
 }
+
+
 
 
 
@@ -1154,6 +754,7 @@ function crearEpisodio(idTemporada){
 
 const temporada =
 
+
 sistema.proyectoActivo.temporadas.find(
 
 t=>t.id===idTemporada
@@ -1162,9 +763,11 @@ t=>t.id===idTemporada
 
 
 
+
 const numero =
 
-temporada.episodios.length+1;
+temporada.episodios.length + 1;
+
 
 
 
@@ -1177,10 +780,11 @@ Date.now(),
 
 nombre:
 
-"Episodio "+numero
+"Episodio " + numero
 
 
 });
+
 
 
 
@@ -1191,7 +795,56 @@ guardarDatos();
 mostrarDetalle();
 
 
+
 }
+
+
+
+
+
+
+
+
+
+/*
+========================================
+CAMBIO DE MÓDULO
+========================================
+*/
+
+
+function cambiarModulo(nombre){
+
+
+
+const contenido =
+
+document.querySelector(
+".contenido"
+);
+
+
+
+contenido.innerHTML =
+
+modulos[nombre];
+
+
+
+
+if(nombre==="proyectos"){
+
+
+mostrarProyectos();
+
+
+}
+
+
+
+}
+
+
 
 
 
@@ -1206,47 +859,20 @@ NAVEGACIÓN
 */
 
 
-function cambiarModulo(nombre){
+function iniciarNavegacion(){
 
 
 
-document.querySelector(
-".contenido"
-).innerHTML =
-
-modulos[nombre];
-
-
-
-if(nombre==="proyectos"){
-
-mostrarProyectos();
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-function iniciar(){
-
-
-
-cargarDatos();
-
-
+const botones =
 
 document.querySelectorAll(
-
 ".menu button"
+);
 
-)[0].onclick =
+
+
+
+botones[0].onclick =
 
 ()=>cambiarModulo(
 "proyectos"
@@ -1257,4 +883,38 @@ document.querySelectorAll(
 }
 
 
-window.onload=iniciar;
+
+
+
+
+
+
+
+/*
+========================================
+ARRANQUE DEL SISTEMA
+========================================
+*/
+
+
+window.onload = function(){
+
+
+
+cargarDatos();
+
+
+
+iniciarNavegacion();
+
+
+
+console.log(
+
+"Longaniza Studio listo"
+
+);
+
+
+
+};
