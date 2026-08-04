@@ -115,26 +115,6 @@ Centro de producción de series animadas.
 
 `,
 
-personajes:`
-
-<h2>
-🎭 Personajes
-</h2>
-
-<p>
-Módulo en desarrollo.
-</p>
-
-<p>
-Aquí se crearán personajes,
-características físicas,
-personalidad y evolución.
-</p>
-
-`,
-
-
-
 historias:`
 
 <h2>
