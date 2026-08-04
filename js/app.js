@@ -394,6 +394,13 @@ mostrarProyectos();
 }
 
 
+if(nombre==="personajes"){
+
+mostrarModuloPersonajes();
+
+}
+
+
 /*
 ========================================
 LISTAR PROYECTOS
