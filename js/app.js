@@ -4,15 +4,24 @@ LONGANIZA STUDIO
 Sistema principal
 Versión 0.1.0
 Módulo:
-Navegación interna
+Gestión de Proyectos
 ========================================
 */
 
 
 console.log(
-    "Longaniza Studio iniciado correctamente"
+    "Longaniza Studio iniciado"
 );
 
+
+
+
+
+/*
+========================================
+BASE DEL SISTEMA
+========================================
+*/
 
 
 const sistema = {
@@ -26,15 +35,17 @@ const sistema = {
     "0.1.0",
 
 
-    proyectoActual:
-    null,
-
-
     moduloActual:
-    "inicio"
+    "inicio",
+
+
+    proyectos:
+    []
 
 
 };
+
+
 
 
 
@@ -42,7 +53,62 @@ const sistema = {
 
 /*
 ========================================
-CONTENIDO DE LOS MÓDULOS
+BASE DE DATOS LOCAL
+========================================
+*/
+
+
+function cargarDatos(){
+
+
+    let datos =
+    localStorage.getItem(
+        "longaniza_proyectos"
+    );
+
+
+
+    if(datos){
+
+
+        sistema.proyectos =
+        JSON.parse(datos);
+
+
+    }
+
+
+}
+
+
+
+
+
+function guardarDatos(){
+
+
+    localStorage.setItem(
+
+        "longaniza_proyectos",
+
+        JSON.stringify(
+            sistema.proyectos
+        )
+
+    );
+
+
+}
+
+
+
+
+
+
+
+/*
+========================================
+MÓDULOS
 ========================================
 */
 
@@ -50,124 +116,279 @@ CONTENIDO DE LOS MÓDULOS
 const modulos = {
 
 
-    inicio:`
+inicio:`
 
-        <h2>
-            Bienvenido a Longaniza Studio
-        </h2>
+<h2>
+🎬 Bienvenido a Longaniza Studio
+</h2>
 
-        <p>
-            Centro de producción de series animadas.
-        </p>
+<p>
+Centro de producción de series animadas.
+</p>
 
-        <p>
-            Selecciona un módulo para comenzar.
-        </p>
-
-    `,
+`,
 
 
 
-    proyectos:`
-
-        <h2>
-            📁 Módulo de Proyectos
-        </h2>
-
-        <p>
-            Aquí se administrarán las series,
-            temporadas y episodios.
-        </p>
-
-    `,
 
 
+proyectos:`
 
-    personajes:`
+<h2>
+📁 Gestión de Proyectos
+</h2>
 
-        <h2>
-            🎭 Módulo de Personajes
-        </h2>
 
-        <p>
-            Aquí se crearán y administrarán
-            personajes.
-        </p>
+<div class="formulario">
 
-    `,
+
+<input
+id="nombreProyecto"
+placeholder="Nombre de la serie"
+/>
 
 
 
-    historias:`
+<select id="tipoProyecto">
 
-        <h2>
-            📝 Módulo de Historias
-        </h2>
+<option>
+Serie Animada
+</option>
 
-        <p>
-            Aquí se desarrollarán ideas y guiones.
-        </p>
+<option>
+Cortometraje
+</option>
 
-    `,
+<option>
+Proyecto Comercial
+</option>
 
-
-
-    escenarios:`
-
-        <h2>
-            🏠 Módulo de Escenarios
-        </h2>
-
-        <p>
-            Biblioteca de lugares y ambientes.
-        </p>
-
-    `,
+</select>
 
 
 
-    episodios:`
+<button onclick="crearProyecto()">
 
-        <h2>
-            🎞 Módulo de Episodios
-        </h2>
+Crear Proyecto
 
-        <p>
-            Control de producción.
-        </p>
-
-    `,
+</button>
 
 
+</div>
 
-    audio:`
 
-        <h2>
-            🎙 Módulo de Audio
-        </h2>
+<hr>
 
-        <p>
-            Voces, música y efectos.
-        </p>
 
-    `,
+<div id="listaProyectos">
+
+</div>
+
+
+`
+
+};
 
 
 
-    configuracion:`
 
-        <h2>
-            ⚙ Configuración
-        </h2>
 
-        <p>
-            Parámetros generales del sistema.
-        </p>
 
-    `
+
+
+/*
+========================================
+CREAR PROYECTO
+========================================
+*/
+
+
+function crearProyecto(){
+
+
+
+const nombre =
+
+document.getElementById(
+"nombreProyecto"
+).value;
+
+
+
+
+const tipo =
+
+document.getElementById(
+"tipoProyecto"
+).value;
+
+
+
+
+
+if(nombre.trim()===""){
+
+
+alert(
+"Escribe un nombre para el proyecto"
+);
+
+
+return;
+
+
+}
+
+
+
+
+const proyecto = {
+
+
+id:
+Date.now(),
+
+
+nombre:
+
+
+nombre,
+
+
+tipo:
+
+
+tipo,
+
+
+estado:
+
+"Desarrollo",
+
+
+temporadas:
+
+[],
+
+
+personajes:
+
+[],
+
+
+episodios:
+
+[]
 
 
 };
+
+
+
+
+
+sistema.proyectos.push(
+proyecto
+);
+
+
+
+guardarDatos();
+
+
+
+mostrarProyectos();
+
+
+
+}
+
+
+
+
+
+/*
+========================================
+MOSTRAR PROYECTOS
+========================================
+*/
+
+
+function mostrarProyectos(){
+
+
+
+const contenedor =
+
+document.getElementById(
+"listaProyectos"
+);
+
+
+
+
+if(!contenedor)
+return;
+
+
+
+
+contenedor.innerHTML="";
+
+
+
+
+
+sistema.proyectos.forEach(
+
+proyecto=>{
+
+
+
+contenedor.innerHTML +=`
+
+
+<div class="tarjeta">
+
+
+<h3>
+
+${proyecto.nombre}
+
+</h3>
+
+
+<p>
+
+Tipo:
+${proyecto.tipo}
+
+</p>
+
+
+<p>
+
+Estado:
+${proyecto.estado}
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+);
+
+
+
+}
 
 
 
@@ -182,35 +403,36 @@ CAMBIO DE MÓDULO
 */
 
 
-function cambiarModulo(nombreModulo){
+function cambiarModulo(nombre){
 
 
-    const contenido =
-    document.querySelector(".contenido");
+const contenido =
+
+document.querySelector(
+".contenido"
+);
 
 
 
-    if(
-        modulos[nombreModulo]
-    ){
+contenido.innerHTML =
+
+modulos[nombre];
 
 
-        contenido.innerHTML =
 
-        modulos[nombreModulo];
-
-
-        sistema.moduloActual =
-        nombreModulo;
+sistema.moduloActual =
+nombre;
 
 
-        console.log(
-            "Módulo activo:",
-            nombreModulo
-        );
+
+if(nombre==="proyectos"){
 
 
-    }
+mostrarProyectos();
+
+
+}
+
 
 
 }
@@ -223,7 +445,7 @@ function cambiarModulo(nombreModulo){
 
 /*
 ========================================
-ACTIVACIÓN DE BOTONES
+NAVEGACIÓN
 ========================================
 */
 
@@ -231,73 +453,20 @@ ACTIVACIÓN DE BOTONES
 function iniciarNavegacion(){
 
 
-    const botones =
-    document.querySelectorAll(
-        ".menu button"
-    );
+const botones =
+
+document.querySelectorAll(
+".menu button"
+);
 
 
 
-    botones[0].onclick =
-    function(){
 
-        cambiarModulo("proyectos");
+botones[0].onclick =
+()=>cambiarModulo(
+"proyectos"
+);
 
-    };
-
-
-
-    botones[1].onclick =
-    function(){
-
-        cambiarModulo("personajes");
-
-    };
-
-
-
-    botones[2].onclick =
-    function(){
-
-        cambiarModulo("historias");
-
-    };
-
-
-
-    botones[3].onclick =
-    function(){
-
-        cambiarModulo("escenarios");
-
-    };
-
-
-
-    botones[4].onclick =
-    function(){
-
-        cambiarModulo("episodios");
-
-    };
-
-
-
-    botones[5].onclick =
-    function(){
-
-        cambiarModulo("audio");
-
-    };
-
-
-
-    botones[6].onclick =
-    function(){
-
-        cambiarModulo("configuracion");
-
-    };
 
 
 }
@@ -306,19 +475,29 @@ function iniciarNavegacion(){
 
 
 
+/*
+========================================
+INICIO
+========================================
+*/
 
 
-window.onload = function(){
-
-
-    console.log(
-        sistema.nombre +
-        " funcionando"
-    );
+window.onload=function(){
 
 
 
-    iniciarNavegacion();
+cargarDatos();
+
+
+
+iniciarNavegacion();
+
+
+
+console.log(
+"Sistema preparado"
+);
+
 
 
 };
