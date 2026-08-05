@@ -228,6 +228,32 @@ placeholder="Defectos">
 
 }
 
+/*
+========================================
+GUARDAR PERSONAJE
+========================================
+*/
+
+
+function guardarPersonaje(){
+
+
+if(personajeEditando){
+
+
+actualizarPersonaje();
+
+
+}else{
+
+
+crearPersonaje();
+
+
+}
+
+
+}
 
 /*
 ========================================
