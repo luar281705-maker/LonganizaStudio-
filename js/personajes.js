@@ -417,7 +417,6 @@ guardarDatos();
 
 renderBibliotecaPersonajes();
 
-listarPersonajes();
 
 alert(
 "Personaje creado correctamente"
