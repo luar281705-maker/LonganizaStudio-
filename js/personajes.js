@@ -419,12 +419,13 @@ renderBibliotecaPersonajes();
 
 listarPersonajes();
 
-
-
 alert(
 "Personaje creado correctamente"
 );
 
+
+
+limpiarFormularioPersonaje();
 
 
 }
@@ -506,6 +507,51 @@ Editar
 }
 
 );
+
+
+}
+
+/*
+========================================
+LIMPIAR FORMULARIO PERSONAJE
+========================================
+*/
+
+
+function limpiarFormularioPersonaje(){
+
+
+const formulario =
+
+document.getElementById(
+"formularioPersonaje"
+);
+
+
+
+if(!formulario)
+return;
+
+
+
+const campos =
+
+formulario.querySelectorAll(
+"input, textarea"
+);
+
+
+
+campos.forEach(
+
+campo=>{
+
+campo.value="";
+
+}
+
+);
+
 
 
 }
