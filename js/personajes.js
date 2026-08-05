@@ -97,6 +97,137 @@ renderBibliotecaPersonajes();
 
 }
 
+/*
+========================================
+FORMULARIO PERSONAJE
+========================================
+*/
+
+
+function mostrarFormularioPersonaje(){
+
+
+const formulario =
+
+document.getElementById(
+"formularioPersonaje"
+);
+
+
+
+if(!formulario)
+return;
+
+
+
+formulario.innerHTML = `
+
+
+<h3>
+Nuevo Personaje
+</h3>
+
+
+<input 
+id="nombrePersonaje"
+placeholder="Nombre del personaje">
+
+
+<input 
+id="tipoPersonaje"
+placeholder="Tipo (humano, animal, avatar...)">
+
+
+<input 
+id="rolPersonaje"
+placeholder="Rol en la historia">
+
+
+<textarea
+id="descripcionPersonaje"
+placeholder="Descripción del personaje">
+</textarea>
+
+
+
+<h4>
+Apariencia
+</h4>
+
+
+<input 
+id="edadPersonaje"
+placeholder="Edad">
+
+
+<input 
+id="cabelloPersonaje"
+placeholder="Cabello">
+
+
+<input 
+id="colorCabelloPersonaje"
+placeholder="Color de cabello">
+
+
+<input 
+id="lentesPersonaje"
+placeholder="Lentes">
+
+
+<input 
+id="ropaPersonaje"
+placeholder="Ropa">
+
+
+<input 
+id="accesoriosPersonaje"
+placeholder="Accesorios">
+
+
+<h4>
+Personalidad
+</h4>
+
+
+<textarea
+id="caracteristicasPersonaje"
+placeholder="Características">
+</textarea>
+
+
+<textarea
+id="formaHablarPersonaje"
+placeholder="Forma de hablar">
+</textarea>
+
+
+<textarea
+id="gustosPersonaje"
+placeholder="Gustos">
+</textarea>
+
+
+<textarea
+id="defectosPersonaje"
+placeholder="Defectos">
+</textarea>
+
+
+
+<button onclick="crearPersonaje()">
+
+💾 Guardar Personaje
+
+</button>
+
+
+`;
+
+
+
+}
+
 
 /*
 ========================================
