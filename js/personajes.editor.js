@@ -8,6 +8,7 @@ Versión 0.4.0
 ========================================
 */
 
+let personajeEditando = null;
 
 function mostrarFormularioPersonaje(){
 
@@ -171,7 +172,7 @@ placeholder="Defectos"
 
 
 
-<button onclick="crearPersonaje()">
+<button id="btnGuardarPersonaje" onclick="guardarPersonaje()">
 
 💾 Guardar Personaje
 
