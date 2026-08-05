@@ -223,3 +223,52 @@ elemento.value="";
 
 
 }
+
+/*
+========================================
+CARGAR PERSONAJE EN EDITOR
+========================================
+*/
+
+
+function cargarFormularioPersonaje(personaje){
+
+
+document.getElementById(
+"nombrePersonaje"
+).value = personaje.nombre;
+
+
+
+document.getElementById(
+"rolPersonaje"
+).value = personaje.rol;
+
+
+
+document.getElementById(
+"descripcionPersonaje"
+).value = personaje.descripcion;
+
+
+
+document.getElementById(
+"edadPersonaje"
+).value = personaje.apariencia.edad;
+
+
+
+document.getElementById(
+"cabelloPersonaje"
+).value = personaje.apariencia.cabello;
+
+
+
+document.getElementById(
+"colorCabelloPersonaje"
+).value = personaje.apariencia.colorCabello;
+
+
+
+document.getElementById(
+"ropa
