@@ -170,8 +170,6 @@ id="defectosPersonaje"
 placeholder="Defectos"
 ></textarea>
 
-
-
 <button id="btnGuardarPersonaje" onclick="guardarPersonaje()">
 
 💾 Guardar Personaje
