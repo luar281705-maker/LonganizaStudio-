@@ -439,6 +439,9 @@ LISTAR PERSONAJES
 
 function listarPersonajes(){
 
+console.log(
+    sistema.proyectoActivo.personajes
+);
 
 const lista =
 
