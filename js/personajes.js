@@ -284,6 +284,7 @@ personaje
 
 guardarDatos();
 
+renderBibliotecaPersonajes();
 
 listarPersonajes();
 
