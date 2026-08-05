@@ -15,7 +15,7 @@ function mostrarFormularioPersonaje(){
 const editor =
 
 document.getElementById(
-"editorPersonaje"
+"formularioPersonaje"
 );
 
 
