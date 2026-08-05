@@ -640,6 +640,94 @@ button{
 }
 
 /* =====================================
+   FORMULARIO DE PERSONAJES
+===================================== */
+
+
+#formularioPersonaje input,
+#formularioPersonaje textarea{
+
+
+    width:100%;
+
+
+    padding:12px;
+
+
+    margin-bottom:10px;
+
+
+    background:
+
+    var(--color-panel-secundario);
+
+
+
+    border:
+
+    1px solid var(--color-borde);
+
+
+
+    border-radius:
+
+    8px;
+
+
+
+    color:white;
+
+
+}
+
+
+
+
+#formularioPersonaje textarea{
+
+
+    min-height:80px;
+
+
+    resize:vertical;
+
+
+}
+
+
+
+
+#formularioPersonaje button{
+
+
+    background:
+
+    var(--color-acento);
+
+
+
+    color:white;
+
+
+
+    border:none;
+
+
+
+    padding:12px 20px;
+
+
+
+    border-radius:8px;
+
+
+
+    cursor:pointer;
+
+
+}
+
+/* =====================================
    BIBLIOTECA DE PERSONAJES
 ===================================== */
 
