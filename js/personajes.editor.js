@@ -184,3 +184,42 @@ placeholder="Defectos"
 `;
 
 }
+
+function limpiarFormularioPersonaje(){
+
+
+const campos = [
+
+"nombrePersonaje",
+"rolPersonaje",
+"descripcionPersonaje",
+"edadPersonaje",
+"cabelloPersonaje",
+"colorCabelloPersonaje",
+"ropaPersonaje",
+"accesoriosPersonaje",
+"caracteristicasPersonaje",
+"formaHablarPersonaje",
+"gustosPersonaje",
+"defectosPersonaje"
+
+];
+
+
+campos.forEach(id=>{
+
+
+const elemento = document.getElementById(id);
+
+
+if(elemento){
+
+elemento.value="";
+
+}
+
+
+});
+
+
+}
