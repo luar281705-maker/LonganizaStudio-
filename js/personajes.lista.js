@@ -61,12 +61,6 @@ let html = `
 🎭 Personajes
 </h3>
 
-<button onclick="nuevoPersonaje()">
-
-➕
-
-</button>
-
 </div>
 
 
