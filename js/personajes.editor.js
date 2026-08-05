@@ -271,4 +271,39 @@ document.getElementById(
 
 
 document.getElementById(
-"ropa
+"ropaPersonaje"
+).value = personaje.apariencia.ropa;
+
+
+
+document.getElementById(
+"accesoriosPersonaje"
+).value = personaje.apariencia.accesorios;
+
+
+
+document.getElementById(
+"caracteristicasPersonaje"
+).value = personaje.personalidad.caracteristicas;
+
+
+
+document.getElementById(
+"formaHablarPersonaje"
+).value = personaje.personalidad.formaHablar;
+
+
+
+document.getElementById(
+"gustosPersonaje"
+).value = personaje.personalidad.gustos;
+
+
+
+document.getElementById(
+"defectosPersonaje"
+).value = personaje.personalidad.defectos;
+
+
+
+}
