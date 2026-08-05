@@ -13,12 +13,34 @@ Versión:
 function renderBibliotecaPersonajes(){
 
 
+const contenedor =
+
+document.getElementById(
+"bibliotecaPersonajes"
+);
+
+
+if(!contenedor){
+
+return;
+
+}
+
+
 const proyecto = sistema.proyectoActivo;
 
 
 if(!proyecto){
 
-return "";
+contenedor.innerHTML = `
+
+<p>
+Abre un proyecto para ver personajes.
+</p>
+
+`;
+
+return;
 
 }
 
@@ -118,9 +140,7 @@ html += `
 `;
 
 
-
-return html;
-
+contenedor.innerHTML = html;
 
 }
 
