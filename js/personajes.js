@@ -70,7 +70,7 @@ contenido.innerHTML = `
 </h2>
 
 
-<div id="formularioPersonaje">
+<div id="formularioPersonaje" class="panel">
 
 </div>
 
@@ -78,12 +78,18 @@ contenido.innerHTML = `
 <hr>
 
 
-<div id="bibliotecaPersonajes">
+<h3>
+Biblioteca de Personajes
+</h3>
+
+
+<div 
+id="bibliotecaPersonajes"
+class="biblioteca-personajes">
 
 </div>
 
 `;
-
 mostrarFormularioPersonaje();
 
 renderBibliotecaPersonajes();
@@ -302,11 +308,10 @@ LISTAR PERSONAJES
 function listarPersonajes(){
 
 
-
 const lista =
 
 document.getElementById(
-"listaPersonajes"
+"bibliotecaPersonajes"
 );
 
 
@@ -316,15 +321,12 @@ return;
 
 
 
-
 lista.innerHTML="";
-
 
 
 
 crearBasePersonajes()
 .forEach(
-
 
 personaje=>{
 
@@ -332,7 +334,7 @@ personaje=>{
 lista.innerHTML += `
 
 
-<div class="tarjeta">
+<div class="personaje-card">
 
 
 <h3>
@@ -341,15 +343,25 @@ lista.innerHTML += `
 
 
 <p>
-Tipo:
+<b>Tipo:</b>
 ${personaje.tipo}
 </p>
 
 
+<p>
+<b>Rol:</b>
+${personaje.rol}
+</p>
+
+
+<p>
+${personaje.descripcion}
+</p>
+
+
+
 <button>
-
 Editar
-
 </button>
 
 
@@ -361,10 +373,7 @@ Editar
 
 }
 
-
-
 );
-
 
 
 }
