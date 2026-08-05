@@ -406,6 +406,30 @@ return;
 
 }
 
+const existe = crearBasePersonajes()
+.some(
+
+p =>
+
+p.nombre.toLowerCase() === personaje.nombre.toLowerCase()
+
+);
+
+
+
+if(existe){
+
+
+alert(
+"Ya existe un personaje con ese nombre"
+);
+
+
+return;
+
+
+}
+
 
 crearBasePersonajes()
 .push(
