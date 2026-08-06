@@ -215,7 +215,7 @@ placeholder="Defectos">
 
 
 
-<button onclick="crearPersonaje()">
+<button id="btnGuardarPersonaje" onclick="guardarPersonaje()">
 
 💾 Guardar Personaje
 
@@ -588,6 +588,14 @@ alert(
 
 
 limpiarFormularioPersonaje();
+
+personajeEditando = null;
+
+
+document.getElementById(
+"btnGuardarPersonaje"
+).innerHTML =
+"💾 Guardar Personaje";
 
 
 }
