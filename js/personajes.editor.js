@@ -170,11 +170,29 @@ id="defectosPersonaje"
 placeholder="Defectos"
 ></textarea>
 
-<button id="btnGuardarPersonaje" onclick="guardarPersonaje()">
+
+<div class="botones-personaje">
+
+
+<button 
+id="btnGuardarPersonaje" 
+onclick="guardarPersonaje()">
 
 💾 Guardar Personaje
 
 </button>
+
+
+
+<button 
+onclick="nuevoPersonaje()">
+
+➕ Nuevo Personaje
+
+</button>
+
+
+</div>
 
 
 </div>
