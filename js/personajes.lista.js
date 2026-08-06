@@ -148,6 +148,15 @@ function nuevoPersonaje(){
 limpiarFormularioPersonaje();
 
 
+personajeEditando = null;
+
+
+document.getElementById(
+"btnGuardarPersonaje"
+).innerHTML =
+"💾 Guardar Personaje";
+
+
 }
 
 
