@@ -110,15 +110,18 @@ ${personaje.nombre}
 
 </div>
 
+
 <div class="tipo">
 
 ${personaje.tipo}
 
 </div>
 
+
 </div>
 
 `;
+
 
 
 });
@@ -134,46 +137,45 @@ html += `
 `;
 
 
+
 contenedor.innerHTML = html;
 
-}
-
-
-
-
-
-function nuevoPersonaje(){
-
-
-limpiarFormularioPersonaje();
-
-
-personajeEditando = null;
-
-
-document.getElementById(
-"btnGuardarPersonaje"
-).innerHTML =
-"💾 Guardar Personaje";
-
 
 }
 
 
 
+
+
+/*
+========================================
+BUSCAR PERSONAJES
+========================================
+*/
 
 
 function filtrarPersonajes(){
 
 
+const campoBusqueda =
+
+document.getElementById(
+"buscarPersonaje"
+);
+
+
+
+if(!campoBusqueda){
+
+return;
+
+}
+
+
+
 const texto =
 
-document
-.getElementById(
-"buscarPersonaje"
-)
-.value
-.toLowerCase();
+campoBusqueda.value.toLowerCase();
 
 
 
@@ -214,6 +216,13 @@ nombre.includes(texto)
 
 
 
+
+
+/*
+========================================
+SELECCIONAR PERSONAJE
+========================================
+*/
 
 
 function seleccionarPersonaje(id){
