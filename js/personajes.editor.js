@@ -190,11 +190,13 @@ function limpiarFormularioPersonaje(){
 const campos = [
 
 "nombrePersonaje",
+"tipoPersonaje",
 "rolPersonaje",
 "descripcionPersonaje",
 "edadPersonaje",
 "cabelloPersonaje",
 "colorCabelloPersonaje",
+"lentesPersonaje",
 "ropaPersonaje",
 "accesoriosPersonaje",
 "caracteristicasPersonaje",
