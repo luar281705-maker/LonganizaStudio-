@@ -303,6 +303,13 @@ document.getElementById(
 "defectosPersonaje"
 ).value = personaje.personalidad.defectos;
 
+personajeEditando = personaje.id;
+
+document.getElementById(
+"btnGuardarPersonaje"
+).innerHTML =
+"💾 Actualizar Personaje";
+
 
 
 }
