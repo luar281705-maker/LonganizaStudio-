@@ -17,6 +17,7 @@ console.log(
 );
 
 
+
 /*
 ========================================
 BASE DE DATOS DE PERSONAJES
@@ -47,6 +48,8 @@ function crearBasePersonajes(){
 }
 
 
+
+
 /*
 ========================================
 VISTA PERSONAJES
@@ -63,11 +66,15 @@ document.getElementById(
 "contenido"
 );
 
+
+
 contenido.innerHTML = `
+
 
 <h2>
 🎭 Editor de Personajes
 </h2>
+
 
 
 <div id="formularioPersonaje" class="panel">
@@ -75,7 +82,9 @@ contenido.innerHTML = `
 </div>
 
 
+
 <hr>
+
 
 
 <h3>
@@ -83,150 +92,31 @@ Biblioteca de Personajes
 </h3>
 
 
-<div 
+
+<div
+
 id="bibliotecaPersonajes"
+
 class="biblioteca-personajes">
 
 </div>
 
+
 `;
+
+
+
 mostrarFormularioPersonaje();
+
 
 renderBibliotecaPersonajes();
 
 
 }
 
-/*
-========================================
-FORMULARIO PERSONAJE
-========================================
-*/
-
-
-function mostrarFormularioPersonaje(){
-
-
-const formulario =
-
-document.getElementById(
-"formularioPersonaje"
-);
 
 
 
-if(!formulario)
-return;
-
-
-
-formulario.innerHTML = `
-
-
-<h3>
-Nuevo Personaje
-</h3>
-
-
-<input 
-id="nombrePersonaje"
-placeholder="Nombre del personaje">
-
-
-<input 
-id="tipoPersonaje"
-placeholder="Tipo (humano, animal, avatar...)">
-
-
-<input 
-id="rolPersonaje"
-placeholder="Rol en la historia">
-
-
-<textarea
-id="descripcionPersonaje"
-placeholder="Descripción del personaje">
-</textarea>
-
-
-
-<h4>
-Apariencia
-</h4>
-
-
-<input 
-id="edadPersonaje"
-placeholder="Edad">
-
-
-<input 
-id="cabelloPersonaje"
-placeholder="Cabello">
-
-
-<input 
-id="colorCabelloPersonaje"
-placeholder="Color de cabello">
-
-
-<input 
-id="lentesPersonaje"
-placeholder="Lentes">
-
-
-<input 
-id="ropaPersonaje"
-placeholder="Ropa">
-
-
-<input 
-id="accesoriosPersonaje"
-placeholder="Accesorios">
-
-
-<h4>
-Personalidad
-</h4>
-
-
-<textarea
-id="caracteristicasPersonaje"
-placeholder="Características">
-</textarea>
-
-
-<textarea
-id="formaHablarPersonaje"
-placeholder="Forma de hablar">
-</textarea>
-
-
-<textarea
-id="gustosPersonaje"
-placeholder="Gustos">
-</textarea>
-
-
-<textarea
-id="defectosPersonaje"
-placeholder="Defectos">
-</textarea>
-
-
-
-<button id="btnGuardarPersonaje" onclick="guardarPersonaje()">
-
-💾 Guardar Personaje
-
-</button>
-
-
-`;
-
-
-
-}
 
 /*
 ========================================
@@ -255,116 +145,187 @@ crearPersonaje();
 
 }
 
+
+
+
 /*
 ========================================
 ACTUALIZAR PERSONAJE
 ========================================
 */
 
+
 function actualizarPersonaje(){
 
-const personaje = crearBasePersonajes().find(
+
+const personaje =
+
+crearBasePersonajes().find(
+
 p => p.id === personajeEditando
+
 );
 
+
+
 if(!personaje){
+
 
 alert(
 "No se encontró el personaje."
 );
 
+
 return;
+
 
 }
 
+
+
 personaje.nombre =
+
 document.getElementById(
 "nombrePersonaje"
 ).value;
 
+
+
 personaje.tipo =
+
 document.getElementById(
 "tipoPersonaje"
 ).value;
 
+
+
 personaje.rol =
+
 document.getElementById(
 "rolPersonaje"
 ).value;
 
+
+
 personaje.descripcion =
+
 document.getElementById(
 "descripcionPersonaje"
 ).value;
 
+
+
 personaje.apariencia.edad =
+
 document.getElementById(
 "edadPersonaje"
 ).value;
 
+
+
 personaje.apariencia.cabello =
+
 document.getElementById(
 "cabelloPersonaje"
 ).value;
 
+
+
 personaje.apariencia.colorCabello =
+
 document.getElementById(
 "colorCabelloPersonaje"
 ).value;
 
+
+
 personaje.apariencia.lentes =
+
 document.getElementById(
 "lentesPersonaje"
 ).value;
 
+
+
 personaje.apariencia.ropa =
+
 document.getElementById(
 "ropaPersonaje"
 ).value;
 
+
+
 personaje.apariencia.accesorios =
+
 document.getElementById(
 "accesoriosPersonaje"
 ).value;
 
+
+
 personaje.personalidad.caracteristicas =
+
 document.getElementById(
 "caracteristicasPersonaje"
 ).value;
 
+
+
 personaje.personalidad.formaHablar =
+
 document.getElementById(
 "formaHablarPersonaje"
 ).value;
 
+
+
 personaje.personalidad.gustos =
+
 document.getElementById(
 "gustosPersonaje"
 ).value;
 
+
+
 personaje.personalidad.defectos =
+
 document.getElementById(
 "defectosPersonaje"
 ).value;
 
+
+
+
 guardarDatos();
+
 
 renderBibliotecaPersonajes();
 
+
 limpiarFormularioPersonaje();
 
+
+
 personajeEditando = null;
+
+
 
 document.getElementById(
 "btnGuardarPersonaje"
 ).innerHTML =
+
 "💾 Guardar Personaje";
+
+
 
 alert(
 "Personaje actualizado correctamente."
 );
 
+
+
 }
+
 
 
 
@@ -391,7 +352,6 @@ return;
 
 
 }
-
 
 
 
@@ -436,6 +396,7 @@ document.getElementById(
 ).value,
 
 
+
 apariencia:{
 
 
@@ -446,13 +407,11 @@ document.getElementById(
 ).value,
 
 
-
 cabello:
 
 document.getElementById(
 "cabelloPersonaje"
 ).value,
-
 
 
 colorCabello:
@@ -462,7 +421,6 @@ document.getElementById(
 ).value,
 
 
-
 lentes:
 
 document.getElementById(
@@ -470,13 +428,11 @@ document.getElementById(
 ).value,
 
 
-
 ropa:
 
 document.getElementById(
 "ropaPersonaje"
 ).value,
-
 
 
 accesorios:
@@ -489,6 +445,7 @@ document.getElementById(
 },
 
 
+
 personalidad:{
 
 
@@ -499,7 +456,6 @@ document.getElementById(
 ).value,
 
 
-
 formaHablar:
 
 document.getElementById(
@@ -507,13 +463,11 @@ document.getElementById(
 ).value,
 
 
-
 gustos:
 
 document.getElementById(
 "gustosPersonaje"
 ).value,
-
 
 
 defectos:
@@ -526,10 +480,14 @@ document.getElementById(
 },
 
 
+
 evolucion:[]
 
 
+
 };
+
+
 
 
 if(personaje.nombre.trim()===""){
@@ -545,7 +503,11 @@ return;
 
 }
 
+
+
+
 const existe = crearBasePersonajes()
+
 .some(
 
 p =>
@@ -570,15 +532,39 @@ return;
 }
 
 
+
+
 crearBasePersonajes()
+
 .push(
+
 personaje
+
 );
+
 
 
 guardarDatos();
 
+
 renderBibliotecaPersonajes();
+
+
+
+limpiarFormularioPersonaje();
+
+
+
+personajeEditando = null;
+
+
+
+document.getElementById(
+"btnGuardarPersonaje"
+).innerHTML =
+
+"💾 Guardar Personaje";
+
 
 
 alert(
@@ -587,18 +573,10 @@ alert(
 
 
 
-limpiarFormularioPersonaje();
-
-personajeEditando = null;
-
-
-document.getElementById(
-"btnGuardarPersonaje"
-).innerHTML =
-"💾 Guardar Personaje";
-
-
 }
+
+
+
 
 
 /*
@@ -610,9 +588,14 @@ LISTAR PERSONAJES
 
 function listarPersonajes(){
 
+
 console.log(
-    sistema.proyectoActivo.personajes
+
+sistema.proyectoActivo.personajes
+
 );
+
+
 
 const lista =
 
@@ -623,6 +606,7 @@ document.getElementById(
 
 
 if(!lista)
+
 return;
 
 
@@ -632,6 +616,7 @@ lista.innerHTML="";
 
 
 crearBasePersonajes()
+
 .forEach(
 
 personaje=>{
@@ -666,65 +651,17 @@ ${personaje.descripcion}
 
 
 
-<button>
-Editar
-</button>
-
-
 </div>
 
 
 `;
 
 
-}
-
-);
-
 
 }
 
-/*
-========================================
-LIMPIAR FORMULARIO PERSONAJE
-========================================
-*/
-
-
-function limpiarFormularioPersonaje(){
-
-
-const formulario =
-
-document.getElementById(
-"formularioPersonaje"
-);
-
-
-
-if(!formulario)
-return;
-
-
-
-const campos =
-
-formulario.querySelectorAll(
-"input, textarea"
-);
-
-
-
-campos.forEach(
-
-campo=>{
-
-campo.value="";
-
-}
 
 );
-
 
 
 }
