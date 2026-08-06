@@ -257,6 +257,117 @@ crearPersonaje();
 
 /*
 ========================================
+ACTUALIZAR PERSONAJE
+========================================
+*/
+
+function actualizarPersonaje(){
+
+const personaje = crearBasePersonajes().find(
+p => p.id === personajeEditando
+);
+
+if(!personaje){
+
+alert(
+"No se encontró el personaje."
+);
+
+return;
+
+}
+
+personaje.nombre =
+document.getElementById(
+"nombrePersonaje"
+).value;
+
+personaje.tipo =
+document.getElementById(
+"tipoPersonaje"
+).value;
+
+personaje.rol =
+document.getElementById(
+"rolPersonaje"
+).value;
+
+personaje.descripcion =
+document.getElementById(
+"descripcionPersonaje"
+).value;
+
+personaje.apariencia.edad =
+document.getElementById(
+"edadPersonaje"
+).value;
+
+personaje.apariencia.cabello =
+document.getElementById(
+"cabelloPersonaje"
+).value;
+
+personaje.apariencia.colorCabello =
+document.getElementById(
+"colorCabelloPersonaje"
+).value;
+
+personaje.apariencia.lentes =
+document.getElementById(
+"lentesPersonaje"
+).value;
+
+personaje.apariencia.ropa =
+document.getElementById(
+"ropaPersonaje"
+).value;
+
+personaje.apariencia.accesorios =
+document.getElementById(
+"accesoriosPersonaje"
+).value;
+
+personaje.personalidad.caracteristicas =
+document.getElementById(
+"caracteristicasPersonaje"
+).value;
+
+personaje.personalidad.formaHablar =
+document.getElementById(
+"formaHablarPersonaje"
+).value;
+
+personaje.personalidad.gustos =
+document.getElementById(
+"gustosPersonaje"
+).value;
+
+personaje.personalidad.defectos =
+document.getElementById(
+"defectosPersonaje"
+).value;
+
+guardarDatos();
+
+renderBibliotecaPersonajes();
+
+limpiarFormularioPersonaje();
+
+personajeEditando = null;
+
+document.getElementById(
+"btnGuardarPersonaje"
+).innerHTML =
+"💾 Guardar Personaje";
+
+alert(
+"Personaje actualizado correctamente."
+);
+
+}
+
+/*
+========================================
 CREAR PERSONAJE
 ========================================
 */
