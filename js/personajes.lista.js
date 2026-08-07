@@ -6,13 +6,13 @@ LONGANIZA STUDIO
 Biblioteca Profesional de Personajes
 
 Versión:
-2.0.0
+2.0.1
 
 Entrega:
 013-C
 
 Estado:
-BIBLIOTECA PROFESIONAL
+BIBLIOTECA PROFESIONAL CORREGIDA
 
 ========================================
 */
@@ -24,11 +24,11 @@ console.log(
 
 
 
-
-
 /*
 ========================================
+
 RENDER BIBLIOTECA
+
 ========================================
 */
 
@@ -37,7 +37,6 @@ function renderBibliotecaPersonajes(){
 
 
 const contenedor =
-
 document.getElementById(
 "bibliotecaPersonajes"
 );
@@ -52,31 +51,23 @@ return;
 
 
 
-
-
 const personajes =
-
 crearBasePersonajes();
-
-
 
 
 
 let html = `
 
 
-<div class="cabecera-biblioteca">
+
+<div class="barraPersonajes">
 
 
-<h2>
-🎭 Personajes
-</h2>
+<button
+onclick="nuevoPersonaje()"
+>
 
-
-
-<button onclick="nuevoPersonaje()">
-
-➕
+➕ Nuevo Personaje
 
 </button>
 
@@ -99,13 +90,10 @@ onkeyup="filtrarPersonajes()"
 
 
 
-<div class="lista-personajes">
+<div class="listaPersonajes">
 
 
 `;
-
-
-
 
 
 
@@ -115,20 +103,14 @@ if(personajes.length===0){
 
 html += `
 
-
 <p>
-No existen personajes creados.
+No existen personajes registrados.
 </p>
-
 
 `;
 
 
-
 }
-
-
-
 
 
 
@@ -136,12 +118,13 @@ No existen personajes creados.
 personajes.forEach(personaje=>{
 
 
-
 html += `
 
 
 
-<div class="item-personaje"
+<div
+
+class="item-personaje tarjetaPersonaje"
 
 onclick="seleccionarPersonaje('${personaje.id}')"
 
@@ -149,70 +132,67 @@ onclick="seleccionarPersonaje('${personaje.id}')"
 
 
 
-<div class="nombre">
+<h3>
 
+🎭 ${personaje.identidad.nombre}
 
-🎭 ${
-
-personaje.identidad.nombre
-
-}
-
-
-</div>
+</h3>
 
 
 
+<p>
 
-
-<div class="tipo">
-
-
+<strong>
 Tipo:
+</strong>
+
+<br>
 
 ${
 
-personaje.identidad.tipo || "Sin definir"
+personaje.identidad.tipo ||
+
+"Sin definir"
 
 }
 
-
-</div>
-
+</p>
 
 
 
 
-<div class="rol">
+<p>
 
-
+<strong>
 Rol:
+</strong>
+
+<br>
 
 ${
 
-personaje.identidad.rol || "Sin definir"
+personaje.identidad.rol ||
+
+"Sin definir"
 
 }
 
-
-</div>
-
+</p>
 
 
 
 
-<div class="descripcion">
-
+<p>
 
 ${
 
-personaje.identidad.descripcion || ""
+personaje.identidad.descripcion ||
+
+"Sin descripción"
 
 }
 
-
-</div>
-
+</p>
 
 
 
@@ -229,18 +209,11 @@ personaje.identidad.descripcion || ""
 
 
 
-
-
-
 html += `
-
 
 </div>
 
-
 `;
-
-
 
 
 
@@ -256,11 +229,11 @@ contenedor.innerHTML = html;
 
 
 
-
-
 /*
 ========================================
+
 BUSCAR PERSONAJES
+
 ========================================
 */
 
@@ -277,14 +250,11 @@ document.getElementById(
 
 
 
-
 if(!campoBusqueda){
 
 return;
 
 }
-
-
 
 
 
@@ -296,8 +266,6 @@ campoBusqueda.value
 
 
 
-
-
 const items =
 
 document.querySelectorAll(
@@ -306,10 +274,7 @@ document.querySelectorAll(
 
 
 
-
-
 items.forEach(item=>{
-
 
 
 const contenido =
@@ -320,20 +285,25 @@ item.innerText
 
 
 
+if(
+contenido.includes(texto)
+){
 
 
 item.style.display =
+"block";
 
 
-contenido.includes(texto)
+}
 
-?
+else{
 
-"block"
 
-:
-
+item.style.display =
 "none";
+
+
+}
 
 
 
@@ -349,11 +319,11 @@ contenido.includes(texto)
 
 
 
-
-
 /*
 ========================================
+
 SELECCIONAR PERSONAJE
+
 ========================================
 */
 
@@ -374,19 +344,32 @@ p=>p.id===id
 
 
 
-
-
 if(!personaje){
 
+
 console.log(
+
 "No encontrado:",
+
 id
+
 );
+
 
 return;
 
 }
 
+
+
+
+console.log(
+
+"Personaje seleccionado:",
+
+personaje.identidad.nombre
+
+);
 
 
 
