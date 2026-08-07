@@ -48,14 +48,11 @@ function crearBasePersonajes(){
 }
 
 
-
-
 /*
 ========================================
-VISTA PERSONAJES
+MOSTRAR MÓDULO PERSONAJES
 ========================================
 */
-
 
 function mostrarModuloPersonajes(){
 
@@ -70,50 +67,69 @@ document.getElementById(
 
 contenido.innerHTML = `
 
-
-<h2>
-🎭 Editor de Personajes
-</h2>
+<div class="personajes-layout">
 
 
+    <!-- ==========================
+         BIBLIOTECA
+    =========================== -->
 
-<div id="formularioPersonaje" class="panel">
+    ${renderBibliotecaPersonajes()}
+
+
+
+    <!-- ==========================
+         EDITOR
+    =========================== -->
+
+    <div class="editor-personaje">
+
+        <div id="editorPersonaje">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- ==========================
+         VISTA PREVIA
+    =========================== -->
+
+    <div class="preview-personaje">
+
+        <h2>
+        👁 Vista previa
+        </h2>
+
+        <div id="previewPersonaje">
+
+            <p>
+            Ningún personaje seleccionado.
+            </p>
+
+        </div>
+
+    </div>
+
 
 </div>
-
-
-
-<hr>
-
-
-
-<h3>
-Biblioteca de Personajes
-</h3>
-
-
-
-<div
-
-id="bibliotecaPersonajes"
-
-class="biblioteca-personajes">
-
-</div>
-
 
 `;
 
 
+/* Cargar el editor */
 
 mostrarFormularioPersonaje();
 
+
+/* Renderizar la biblioteca */
 
 renderBibliotecaPersonajes();
 
 
 }
-
 
 
 
