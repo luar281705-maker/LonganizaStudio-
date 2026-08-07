@@ -7,13 +7,14 @@ Archivo:
 app.js
 
 Versión:
-1.0.0
+1.1.0
 
 Entrega:
-008-A
+008-B
 
 Estado:
-CONTROL PRINCIPAL INICIAL
+CONTROL PRINCIPAL
+CON NAVEGACIÓN INICIAL
 
 NO MODIFICAR
 SIN INDICACIÓN.
@@ -25,7 +26,7 @@ SIN INDICACIÓN.
 
 /*
 ========================================
-INICIO DEL SISTEMA
+INICIAR APLICACIÓN
 ========================================
 */
 
@@ -33,15 +34,27 @@ INICIO DEL SISTEMA
 function iniciarAplicacion(){
 
 
+
     console.log(
+
         "🌭 Longaniza Studio iniciado"
+
     );
+
 
 
     console.log(
+
         "Sistema actual:",
+
         sistema
+
     );
+
+
+
+    configurarMenu();
+
 
 
 }
@@ -51,9 +64,59 @@ function iniciarAplicacion(){
 
 
 
+
 /*
 ========================================
-EVENTO DE CARGA
+CONFIGURAR MENU
+========================================
+*/
+
+
+function configurarMenu(){
+
+
+
+    const btnProyectos =
+
+    document.getElementById(
+
+        "btnProyectos"
+
+    );
+
+
+
+
+
+    if(btnProyectos){
+
+
+        btnProyectos.onclick =
+
+        function(){
+
+
+            renderBibliotecaProyectos();
+
+
+        };
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/*
+========================================
+EVENTO INICIAL
 ========================================
 */
 
