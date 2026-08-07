@@ -12,137 +12,82 @@ Versión:
 
 function renderBibliotecaPersonajes(){
 
-
 const contenedor =
-
-document.getElementById(
-"bibliotecaPersonajes"
-);
-
+document.getElementById("bibliotecaPersonajes");
 
 if(!contenedor){
-
-return;
-
+    return;
 }
-
 
 const proyecto = sistema.proyectoActivo;
 
-
 if(!proyecto){
 
-contenedor.innerHTML = `
+    contenedor.innerHTML = `
+        <p>No hay proyecto abierto.</p>
+    `;
 
-<p>
-Abre un proyecto para ver personajes.
-</p>
-
-`;
-
-return;
-
+    return;
 }
-
-
 
 const personajes = crearBasePersonajes();
 
-
-
 let html = `
-
-<div class="biblioteca-personajes">
-
 
 <div class="biblioteca-header">
 
-<h3>
-🎭 Personajes
-</h3>
+    <h3>🎭 Personajes</h3>
+
+    <button onclick="nuevoPersonaje()">
+        ➕
+    </button>
 
 </div>
 
-
-
 <input
-
 id="buscarPersonaje"
-
 type="text"
-
 placeholder="Buscar personaje..."
-
 onkeyup="filtrarPersonajes()"
-
 >
-
-
 
 <div
-
 id="listaBibliotecaPersonajes"
-
-class="lista-personajes"
-
->
+class="lista-personajes">
 
 `;
-
-
 
 personajes.forEach(personaje=>{
 
-
 html += `
 
 <div
-
 class="item-personaje"
+onclick="seleccionarPersonaje(${personaje.id})">
 
-onclick="seleccionarPersonaje(${personaje.id})"
+    <div class="nombre">
+        ${personaje.nombre}
+    </div>
 
->
-
-<div class="nombre">
-
-${personaje.nombre}
-
-</div>
-
-
-<div class="tipo">
-
-${personaje.tipo}
-
-</div>
-
+    <div class="tipo">
+        ${personaje.tipo}
+    </div>
 
 </div>
 
 `;
 
-
-
 });
-
-
 
 html += `
 
 </div>
 
-</div>
-
 `;
-
-
 
 contenedor.innerHTML = html;
 
-
 }
-
 
 
 
