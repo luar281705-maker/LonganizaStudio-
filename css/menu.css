@@ -1,0 +1,203 @@
+/*
+========================================
+
+LONGANIZA STUDIO
+
+Archivo:
+menu.css
+
+Versión:
+1.0.0
+
+Entrega:
+004
+
+Estado:
+MENÚ LATERAL INICIAL
+
+NO MODIFICAR
+SIN INDICACIÓN.
+
+========================================
+*/
+
+
+/*
+========================================
+MENU PRINCIPAL
+========================================
+*/
+
+
+#menu {
+
+
+    width:260px;
+
+
+    flex-shrink:0;
+
+
+    background:#2c3e50;
+
+
+    padding:20px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+
+}
+
+
+
+
+
+
+/*
+========================================
+BOTONES DEL MENU
+========================================
+*/
+
+
+#menu button {
+
+
+    width:100%;
+
+
+    padding:15px;
+
+
+    border-radius:var(--radio);
+
+
+    background:white;
+
+
+    color:var(--color-texto);
+
+
+    font-size:15px;
+
+
+    font-weight:600;
+
+
+    text-align:left;
+
+
+    transition:.2s ease;
+
+
+}
+
+
+
+
+
+#menu button:hover {
+
+
+    background:
+
+    var(--color-secundario);
+
+
+
+    transform:
+
+    translateX(5px);
+
+
+}
+
+
+
+
+
+#menu button:active {
+
+
+    transform:
+
+    scale(.98);
+
+
+}
+
+
+
+
+
+
+/*
+========================================
+ESTADO ACTIVO FUTURO
+========================================
+*/
+
+
+#menu button.activo {
+
+
+    background:
+
+    var(--color-principal);
+
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+/*
+========================================
+ADAPTACIÓN MÓVIL
+========================================
+*/
+
+
+@media(max-width:800px){
+
+
+    #menu{
+
+
+        width:100%;
+
+
+        flex-direction:row;
+
+
+        overflow-x:auto;
+
+
+    }
+
+
+
+    #menu button{
+
+
+        min-width:180px;
+
+
+    }
+
+
+}
