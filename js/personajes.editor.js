@@ -6,10 +6,13 @@ LONGANIZA STUDIO
 Editor Profesional de Personajes
 
 Versión:
-2.0.0
+2.1.0
 
 Entrega:
-013-B
+013-D
+
+Estado:
+EDITOR CONECTADO A TARJETAS
 
 ========================================
 */
@@ -20,10 +23,11 @@ let personajeEditando = null;
 
 
 
-
 /*
 ========================================
+
 MOSTRAR FORMULARIO
+
 ========================================
 */
 
@@ -50,18 +54,13 @@ return;
 editor.innerHTML = `
 
 
-<div class="formulario-personaje">
 
+<h2 id="tituloEditorPersonaje">
 
-<h2>
-📝 Ficha del Personaje
+➕ Nuevo Personaje
+
 </h2>
 
-
-
-<h3>
-Identidad
-</h3>
 
 
 <input
@@ -70,10 +69,12 @@ placeholder="Nombre del personaje"
 >
 
 
+
 <input
 id="tipoPersonaje"
 placeholder="Tipo de personaje"
 >
+
 
 
 <input
@@ -82,23 +83,21 @@ placeholder="Rol dentro de la serie"
 >
 
 
+
 <input
 id="edadPersonaje"
 placeholder="Edad"
 >
 
 
+
 <textarea
 id="descripcionPersonaje"
-placeholder="Descripción general"
+placeholder="Descripción del personaje"
 ></textarea>
 
 
 
-
-<h3>
-Apariencia
-</h3>
 
 
 <input
@@ -107,16 +106,19 @@ placeholder="Cabello"
 >
 
 
+
 <input
 id="colorCabelloPersonaje"
 placeholder="Color de cabello"
 >
 
 
+
 <input
 id="ropaPersonaje"
 placeholder="Ropa característica"
 >
+
 
 
 <input
@@ -127,16 +129,11 @@ placeholder="Accesorios"
 
 
 
-
-<h3>
-Personalidad
-</h3>
-
-
 <textarea
 id="caracteristicasPersonaje"
 placeholder="Características"
 ></textarea>
+
 
 
 <textarea
@@ -145,10 +142,12 @@ placeholder="Forma de hablar"
 ></textarea>
 
 
+
 <textarea
 id="gustosPersonaje"
 placeholder="Gustos"
 ></textarea>
+
 
 
 <textarea
@@ -158,17 +157,11 @@ placeholder="Defectos"
 
 
 
-
-
-<h3>
-Producción
-</h3>
-
-
 <textarea
 id="tipoHumorPersonaje"
 placeholder="Tipo de humor"
 ></textarea>
+
 
 
 <textarea
@@ -181,8 +174,11 @@ placeholder="Frases típicas"
 
 
 <button
+
 id="btnGuardarPersonaje"
+
 onclick="guardarPersonaje()"
+
 >
 
 💾 Guardar Personaje
@@ -191,16 +187,18 @@ onclick="guardarPersonaje()"
 
 
 
+
+
 <button
+
 onclick="nuevoPersonaje()"
+
 >
 
 ➕ Nuevo Personaje
 
 </button>
 
-
-</div>
 
 
 `;
@@ -216,9 +214,12 @@ onclick="nuevoPersonaje()"
 
 
 
+
 /*
 ========================================
+
 LIMPIAR FORMULARIO
+
 ========================================
 */
 
@@ -226,7 +227,8 @@ LIMPIAR FORMULARIO
 function limpiarFormularioPersonaje(){
 
 
-const campos = [
+
+const campos=[
 
 
 "nombrePersonaje",
@@ -264,6 +266,8 @@ const campos = [
 
 
 
+
+
 campos.forEach(id=>{
 
 
@@ -275,7 +279,9 @@ document.getElementById(id);
 
 if(elemento){
 
+
 elemento.value="";
+
 
 }
 
@@ -285,7 +291,30 @@ elemento.value="";
 
 
 
+
+
+const titulo =
+
+document.getElementById(
+"tituloEditorPersonaje"
+);
+
+
+
+if(titulo){
+
+
+titulo.innerHTML=
+
+"➕ Nuevo Personaje";
+
+
 }
+
+
+
+}
+
 
 
 
@@ -296,7 +325,9 @@ elemento.value="";
 
 /*
 ========================================
+
 NUEVO PERSONAJE
+
 ========================================
 */
 
@@ -304,10 +335,13 @@ NUEVO PERSONAJE
 function nuevoPersonaje(){
 
 
+
 limpiarFormularioPersonaje();
 
 
+
 personajeEditando=null;
+
 
 
 
@@ -321,9 +355,11 @@ document.getElementById(
 
 if(boton){
 
+
 boton.innerHTML=
 
 "💾 Guardar Personaje";
+
 
 }
 
@@ -341,7 +377,9 @@ boton.innerHTML=
 
 /*
 ========================================
+
 CARGAR PERSONAJE
+
 ========================================
 */
 
@@ -350,158 +388,118 @@ function cargarFormularioPersonaje(personaje){
 
 
 
-document.getElementById(
-"nombrePersonaje"
-).value =
+if(!personaje){
 
-personaje.identidad.nombre;
+return;
 
+}
 
 
 
+setValor(
+"nombrePersonaje",
+personaje.identidad.nombre
+);
 
-document.getElementById(
-"tipoPersonaje"
-).value =
 
-personaje.identidad.tipo;
 
+setValor(
+"tipoPersonaje",
+personaje.identidad.tipo
+);
 
 
 
+setValor(
+"rolPersonaje",
+personaje.identidad.rol
+);
 
-document.getElementById(
-"rolPersonaje"
-).value =
 
-personaje.identidad.rol;
 
+setValor(
+"edadPersonaje",
+personaje.identidad.edad
+);
 
 
 
+setValor(
+"descripcionPersonaje",
+personaje.identidad.descripcion
+);
 
-document.getElementById(
-"edadPersonaje"
-).value =
 
-personaje.identidad.edad;
 
 
+setValor(
+"cabelloPersonaje",
+personaje.apariencia.cabello
+);
 
 
 
-document.getElementById(
-"descripcionPersonaje"
-).value =
+setValor(
+"colorCabelloPersonaje",
+personaje.apariencia.colorCabello
+);
 
-personaje.identidad.descripcion;
 
 
+setValor(
+"ropaPersonaje",
+personaje.apariencia.ropa
+);
 
 
 
+setValor(
+"accesoriosPersonaje",
+personaje.apariencia.accesorios
+);
 
-document.getElementById(
-"cabelloPersonaje"
-).value =
 
-personaje.apariencia.cabello;
 
 
+setValor(
+"caracteristicasPersonaje",
+personaje.personalidad.caracteristicas
+);
 
 
 
-document.getElementById(
-"colorCabelloPersonaje"
-).value =
+setValor(
+"formaHablarPersonaje",
+personaje.personalidad.formaHablar
+);
 
-personaje.apariencia.colorCabello;
 
 
+setValor(
+"gustosPersonaje",
+personaje.personalidad.gustos
+);
 
 
 
-document.getElementById(
-"ropaPersonaje"
-).value =
+setValor(
+"defectosPersonaje",
+personaje.personalidad.defectos
+);
 
-personaje.apariencia.ropa;
 
 
+setValor(
+"tipoHumorPersonaje",
+personaje.personalidad.tipoHumor
+);
 
 
 
-document.getElementById(
-"accesoriosPersonaje"
-).value =
-
-personaje.apariencia.accesorios;
-
-
-
-
-
-
-
-document.getElementById(
-"caracteristicasPersonaje"
-).value =
-
-personaje.personalidad.caracteristicas;
-
-
-
-
-
-document.getElementById(
-"formaHablarPersonaje"
-).value =
-
-personaje.personalidad.formaHablar;
-
-
-
-
-
-document.getElementById(
-"gustosPersonaje"
-).value =
-
-personaje.personalidad.gustos;
-
-
-
-
-
-document.getElementById(
-"defectosPersonaje"
-).value =
-
-personaje.personalidad.defectos;
-
-
-
-
-
-
-
-document.getElementById(
-"tipoHumorPersonaje"
-).value =
-
-personaje.personalidad.tipoHumor || "";
-
-
-
-
-
-document.getElementById(
-"frasesPersonaje"
-).value =
-
-personaje.personalidad.frasesTipicas || "";
-
-
+setValor(
+"frasesPersonaje",
+personaje.personalidad.frasesTipicas
+);
 
 
 
@@ -513,11 +511,103 @@ personajeEditando = personaje.id;
 
 
 
+const boton =
+
 document.getElementById(
 "btnGuardarPersonaje"
-).innerHTML =
+);
+
+
+
+if(boton){
+
+
+boton.innerHTML=
 
 "💾 Actualizar Personaje";
+
+
+}
+
+
+
+
+
+const titulo =
+
+document.getElementById(
+"tituloEditorPersonaje"
+);
+
+
+
+if(titulo){
+
+
+titulo.innerHTML=
+
+"✏️ Editando: "
+
++
+
+personaje.identidad.nombre;
+
+
+}
+
+
+
+if(
+
+typeof verPreviewPersonaje === "function"
+
+){
+
+
+verPreviewPersonaje(personaje.id);
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+
+ASIGNAR VALORES SEGURO
+
+========================================
+*/
+
+
+function setValor(id,valor){
+
+
+const elemento =
+
+document.getElementById(id);
+
+
+
+if(elemento){
+
+
+elemento.value=
+
+valor || "";
+
+
+}
 
 
 
