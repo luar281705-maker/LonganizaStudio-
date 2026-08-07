@@ -7,20 +7,20 @@ Módulo:
 Personajes
 
 Versión:
-2.0.0
+2.1.0
 
 Entrega:
-013-A
+013-D
 
 Estado:
-SISTEMA PROFESIONAL DE PERSONAJES
+SISTEMA PROFESIONAL + TARJETAS VISUALES
 
 ========================================
 */
 
 
 console.log(
-"🎭 Módulo Personajes Profesional 2.0 cargado"
+"🎭 Módulo Personajes Profesional 2.1 cargado"
 );
 
 
@@ -29,16 +29,16 @@ console.log(
 
 /*
 ========================================
+
 OBTENER SISTEMA CENTRAL
+
 ========================================
 */
 
 
 function obtenerSistemaPersonajes(){
 
-
-    return window.LonganizaStudio.sistema;
-
+return window.LonganizaStudio.sistema;
 
 }
 
@@ -47,10 +47,11 @@ function obtenerSistemaPersonajes(){
 
 
 
-
 /*
 ========================================
+
 BASE GLOBAL DE PERSONAJES
+
 ========================================
 */
 
@@ -58,21 +59,21 @@ BASE GLOBAL DE PERSONAJES
 function crearBasePersonajes(){
 
 
-    const sistema = obtenerSistemaPersonajes();
+const sistema = obtenerSistemaPersonajes();
 
 
 
-    if(!sistema.personajes){
+if(!sistema.personajes){
 
 
-        sistema.personajes=[];
+sistema.personajes=[];
 
 
-    }
+}
 
 
 
-    return sistema.personajes;
+return sistema.personajes;
 
 
 }
@@ -85,7 +86,9 @@ function crearBasePersonajes(){
 
 /*
 ========================================
+
 MOSTRAR MÓDULO
+
 ========================================
 */
 
@@ -93,66 +96,68 @@ MOSTRAR MÓDULO
 function mostrarModuloPersonajes(){
 
 
-    const contenido =
+const contenido =
 
-    document.getElementById(
-        "contenido"
-    );
-
-
-
-    if(!contenido)
-    return;
+document.getElementById(
+"contenido"
+);
 
 
 
-    contenido.innerHTML = `
-
-
-    <div class="modulo-personajes">
-
-
-        <h1>
-        🎭 Biblioteca Profesional de Personajes
-        </h1>
+if(!contenido)
+return;
 
 
 
-        <div id="bibliotecaPersonajes">
-
-        </div>
+contenido.innerHTML = `
 
 
-
-        <div id="editorPersonaje">
-
-        </div>
+<div class="modulo-personajes">
 
 
-
-        <div id="previewPersonaje">
-
-
-            <p>
-            Ningún personaje seleccionado.
-            </p>
-
-
-        </div>
-
-
-    </div>
-
-
-    `;
+<h1>
+🎭 Biblioteca Profesional de Personajes
+</h1>
 
 
 
-    mostrarFormularioPersonaje();
+<div id="bibliotecaPersonajes">
+
+</div>
 
 
-    renderBibliotecaPersonajes();
 
+<div id="editorPersonaje">
+
+</div>
+
+
+
+<div id="previewPersonaje">
+
+<p>
+Ningún personaje seleccionado.
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+prepararDatosVisualesPersonajes();
+
+
+mostrarFormularioPersonaje();
+
+
+renderBibliotecaPersonajes();
 
 
 }
@@ -163,9 +168,13 @@ function mostrarModuloPersonajes(){
 
 
 
+
+
 /*
 ========================================
+
 GUARDAR PERSONAJE
+
 ========================================
 */
 
@@ -173,19 +182,21 @@ GUARDAR PERSONAJE
 function guardarPersonaje(){
 
 
-    if(personajeEditando){
+if(personajeEditando){
 
 
-        actualizarPersonaje();
+actualizarPersonaje();
 
 
-    }else{
+}
+
+else{
 
 
-        crearPersonaje();
+crearPersonaje();
 
 
-    }
+}
 
 
 }
@@ -196,9 +207,13 @@ function guardarPersonaje(){
 
 
 
+
+
 /*
 ========================================
+
 CREAR PERSONAJE
+
 ========================================
 */
 
@@ -206,9 +221,7 @@ CREAR PERSONAJE
 function crearPersonaje(){
 
 
-
 const personaje = {
-
 
 
 id:
@@ -217,110 +230,107 @@ generarIDPersonaje(),
 
 
 
-
-
 identidad:{
 
 
-    nombre:"",
+nombre:"",
 
-    tipo:"",
+tipo:"",
 
-    rol:"",
+rol:"",
 
-    importancia:"",
+importancia:"",
 
-    edad:"",
+edad:"",
 
-    descripcion:""
+descripcion:""
 
 
 },
 
 
 
+visual:{
+
+
+imagen:"",
+
+color:"#e67e22"
+
+
+},
 
 
 
 apariencia:{
 
 
-    estiloVisual:
-    "Dibujo infantil tipo bolitas y palitos",
+estiloVisual:
+"Dibujo infantil tipo bolitas y palitos",
 
 
-    altura:"",
+altura:"",
 
-    complexión:"",
+complexión:"",
 
-    cabello:"",
+cabello:"",
 
-    colorCabello:"",
+colorCabello:"",
 
-    ropa:"",
+ropa:"",
 
-    colores:"",
+colores:"",
 
-    accesorios:"",
+accesorios:"",
 
-    rasgos:""
+rasgos:""
 
 
 },
-
-
-
-
 
 
 
 personalidad:{
 
 
-    caracteristicas:"",
+caracteristicas:"",
 
-    virtudes:"",
+virtudes:"",
 
-    defectos:"",
+defectos:"",
 
-    miedos:"",
+miedos:"",
 
-    motivaciones:"",
+motivaciones:"",
 
-    gustos:"",
+gustos:"",
 
-    noGusta:"",
+noGusta:"",
 
-    tipoHumor:"",
+tipoHumor:"",
 
-    formaHablar:"",
+formaHablar:"",
 
-    frasesTipicas:""
+frasesTipicas:""
 
 
 },
-
-
-
 
 
 
 voz:{
 
 
-    tipo:"",
+tipo:"",
 
-    tono:"",
+tono:"",
 
-    velocidad:"",
+velocidad:"",
 
-    referencia:""
+referencia:""
 
 
 },
-
-
-
 
 
 
@@ -328,26 +338,19 @@ relaciones:[],
 
 
 
-
-
-
-
 historia:{
 
 
-    origen:"",
+origen:"",
 
-    pasado:"",
+pasado:"",
 
-    objetivos:"",
+objetivos:"",
 
-    secretos:""
+secretos:""
 
 
 },
-
-
-
 
 
 
@@ -355,24 +358,17 @@ evolucion:[],
 
 
 
-
-
-
-
 produccion:{
 
 
-    estado:"Activo",
+estado:"Activo",
 
-    modeloVisual:"",
+modeloVisual:"",
 
-    vozAsignada:""
+vozAsignada:""
 
 
 },
-
-
-
 
 
 
@@ -386,13 +382,7 @@ new Date().toLocaleString()
 
 
 
-
-
-
 capturarDatosFormulario(personaje);
-
-
-
 
 
 
@@ -403,21 +393,14 @@ personaje.identidad.nombre.trim()===""
 ){
 
 
-    alert(
-
-    "Escribe un nombre para el personaje"
-
-    );
+alert(
+"Escribe un nombre para el personaje"
+);
 
 
-    return;
-
+return;
 
 }
-
-
-
-
 
 
 
@@ -427,7 +410,6 @@ crearBasePersonajes()
 
 .some(
 
-
 p =>
 
 p.identidad.nombre.toLowerCase()
@@ -436,13 +418,7 @@ p.identidad.nombre.toLowerCase()
 
 personaje.identidad.nombre.toLowerCase()
 
-
-
 );
-
-
-
-
 
 
 
@@ -450,20 +426,13 @@ if(existe){
 
 
 alert(
-
 "Ya existe un personaje con ese nombre"
-
 );
 
 
 return;
 
-
 }
-
-
-
-
 
 
 
@@ -473,14 +442,7 @@ crearBasePersonajes()
 
 
 
-
-
-
-
 guardarDatos();
-
-
-
 
 
 
@@ -488,22 +450,7 @@ renderBibliotecaPersonajes();
 
 
 
-
-
-
 limpiarFormularioPersonaje();
-
-
-
-
-
-
-
-alert(
-
-"Personaje profesional creado correctamente"
-
-);
 
 
 
@@ -519,13 +466,14 @@ alert(
 
 /*
 ========================================
+
 ACTUALIZAR PERSONAJE
+
 ========================================
 */
 
 
 function actualizarPersonaje(){
-
 
 
 const personaje =
@@ -534,33 +482,17 @@ crearBasePersonajes()
 
 .find(
 
-p =>
-
-p.id === personajeEditando
+p=>p.id===personajeEditando
 
 );
-
-
 
 
 
 if(!personaje){
 
-
-alert(
-
-"No existe el personaje"
-
-);
-
-
 return;
 
-
 }
-
-
-
 
 
 
@@ -568,13 +500,7 @@ capturarDatosFormulario(personaje);
 
 
 
-
-
-
 guardarDatos();
-
-
-
 
 
 
@@ -582,28 +508,11 @@ renderBibliotecaPersonajes();
 
 
 
-
-
-
 limpiarFormularioPersonaje();
 
 
 
-
-
-
 personajeEditando=null;
-
-
-
-
-
-
-alert(
-
-"Personaje actualizado"
-
-);
 
 
 
@@ -619,7 +528,307 @@ alert(
 
 /*
 ========================================
-CAPTURAR DATOS DEL FORMULARIO
+
+EDITAR PERSONAJE
+
+========================================
+*/
+
+
+function editarPersonaje(id){
+
+
+const personaje =
+
+crearBasePersonajes()
+
+.find(
+
+p=>p.id===id
+
+);
+
+
+
+if(!personaje){
+
+return;
+
+}
+
+
+
+cargarFormularioPersonaje(personaje);
+
+
+
+personajeEditando=id;
+
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+
+ELIMINAR PERSONAJE
+
+========================================
+*/
+
+
+function eliminarPersonaje(id){
+
+
+const confirmar =
+
+confirm(
+
+"¿Eliminar este personaje?"
+
+);
+
+
+
+if(!confirmar){
+
+return;
+
+}
+
+
+
+const lista =
+
+crearBasePersonajes();
+
+
+
+const posicion =
+
+lista.findIndex(
+
+p=>p.id===id
+
+);
+
+
+
+if(posicion!==-1){
+
+
+lista.splice(posicion,1);
+
+
+
+guardarDatos();
+
+
+
+renderBibliotecaPersonajes();
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+
+PREVIEW PERSONAJE
+
+========================================
+*/
+
+
+function verPreviewPersonaje(id){
+
+
+const personaje =
+
+crearBasePersonajes()
+
+.find(
+
+p=>p.id===id
+
+);
+
+
+
+if(!personaje)
+return;
+
+
+
+const preview =
+
+document.getElementById(
+"previewPersonaje"
+);
+
+
+
+preview.innerHTML = `
+
+
+<h2>
+
+${personaje.identidad.nombre}
+
+</h2>
+
+
+
+<p>
+
+Tipo:
+
+${personaje.identidad.tipo}
+
+</p>
+
+
+
+<p>
+
+Rol:
+
+${personaje.identidad.rol}
+
+</p>
+
+
+
+<p>
+
+Estado:
+
+${personaje.produccion.estado}
+
+</p>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+
+PREPARAR DATOS VISUALES
+
+========================================
+*/
+
+
+function prepararDatosVisualesPersonajes(){
+
+
+const personajes =
+
+crearBasePersonajes();
+
+
+
+personajes.forEach(personaje=>{
+
+
+if(!personaje.visual){
+
+
+personaje.visual={
+
+imagen:"",
+
+color:"#e67e22"
+
+};
+
+
+}
+
+
+
+if(!personaje.produccion){
+
+
+personaje.produccion={
+
+estado:"Activo",
+
+modeloVisual:"",
+
+vozAsignada:""
+
+};
+
+
+}
+
+
+
+});
+
+
+
+guardarDatos();
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+
+CAPTURAR FORMULARIO
+
 ========================================
 */
 
@@ -627,14 +836,11 @@ CAPTURAR DATOS DEL FORMULARIO
 function capturarDatosFormulario(personaje){
 
 
-
 personaje.identidad.nombre =
 
 document.getElementById(
 "nombrePersonaje"
 ).value;
-
-
 
 
 
@@ -646,15 +852,11 @@ document.getElementById(
 
 
 
-
-
 personaje.identidad.rol =
 
 document.getElementById(
 "rolPersonaje"
 ).value;
-
-
 
 
 
@@ -666,20 +868,11 @@ document.getElementById(
 
 
 
-
-
-/*
-APARIENCIA
-*/
-
-
 personaje.apariencia.cabello =
 
 document.getElementById(
 "cabelloPersonaje"
 ).value;
-
-
 
 
 
@@ -691,15 +884,11 @@ document.getElementById(
 
 
 
-
-
 personaje.apariencia.ropa =
 
 document.getElementById(
 "ropaPersonaje"
 ).value;
-
-
 
 
 
@@ -711,20 +900,11 @@ document.getElementById(
 
 
 
-
-
-/*
-PERSONALIDAD
-*/
-
-
 personaje.personalidad.caracteristicas =
 
 document.getElementById(
 "caracteristicasPersonaje"
 ).value;
-
-
 
 
 
@@ -736,15 +916,11 @@ document.getElementById(
 
 
 
-
-
 personaje.personalidad.gustos =
 
 document.getElementById(
 "gustosPersonaje"
 ).value;
-
-
 
 
 
@@ -768,7 +944,9 @@ document.getElementById(
 
 /*
 ========================================
+
 GENERAR ID
+
 ========================================
 */
 
@@ -802,10 +980,11 @@ Math.random()
 
 
 
-
 /*
 ========================================
-LISTAR PERSONAJES
+
+LISTAR
+
 ========================================
 */
 
