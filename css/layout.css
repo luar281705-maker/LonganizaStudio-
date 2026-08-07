@@ -1,0 +1,275 @@
+/*
+========================================
+
+LONGANIZA STUDIO
+
+Archivo:
+layout.css
+
+Versión:
+1.0.0
+
+Entrega:
+003
+
+Estado:
+ESTRUCTURA PRINCIPAL
+
+NO MODIFICAR
+SIN INDICACIÓN.
+
+========================================
+*/
+
+
+/*
+========================================
+APLICACIÓN PRINCIPAL
+========================================
+*/
+
+
+#app {
+
+
+    width:100%;
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+
+/*
+========================================
+CABECERA
+========================================
+*/
+
+
+#cabecera {
+
+
+    width:100%;
+
+
+    min-height:90px;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:20px 30px;
+
+
+    background:white;
+
+
+    border-bottom:1px solid var(--color-borde);
+
+
+    box-shadow:var(--sombra-suave);
+
+
+}
+
+
+
+
+.logo {
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+.logo h1 {
+
+
+    font-size:28px;
+
+
+}
+
+
+
+.logo p {
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+.version {
+
+
+    font-size:14px;
+
+
+    opacity:.7;
+
+
+}
+
+
+
+
+
+
+/*
+========================================
+CONTENEDOR PRINCIPAL
+========================================
+*/
+
+
+#contenedor {
+
+
+    flex:1;
+
+
+    display:flex;
+
+
+    width:100%;
+
+
+    min-height:calc(100vh - 90px);
+
+
+
+}
+
+
+
+
+
+
+/*
+========================================
+AREA DE CONTENIDO
+========================================
+*/
+
+
+#contenido {
+
+
+    flex:1;
+
+
+    padding:30px;
+
+
+    overflow-y:auto;
+
+
+    min-width:0;
+
+
+}
+
+
+
+
+
+
+/*
+========================================
+BIENVENIDA
+========================================
+*/
+
+
+#bienvenida {
+
+
+    background:white;
+
+
+    padding:40px;
+
+
+    border-radius:var(--radio);
+
+
+    box-shadow:var(--sombra-suave);
+
+
+    max-width:700px;
+
+
+}
+
+
+
+#bienvenida h2 {
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+#bienvenida h3 {
+
+
+    margin:20px 0;
+
+
+    color:var(--color-principal);
+
+
+}
+
+
+
+
+/*
+========================================
+RESPONSIVE
+========================================
+*/
+
+
+@media(max-width:800px){
+
+
+    #contenedor{
+
+
+        flex-direction:column;
+
+
+    }
+
+
+}
