@@ -6,21 +6,23 @@ LONGANIZA STUDIO
 Biblioteca Profesional de Personajes
 
 Versión:
-2.0.1
+2.1.0
 
 Entrega:
-013-C
+013-D
 
 Estado:
-BIBLIOTECA PROFESIONAL CORREGIDA
+TARJETAS VISUALES PROFESIONALES
 
 ========================================
 */
 
 
 console.log(
-"🎭 Biblioteca Profesional de Personajes cargada"
+"🎭 Biblioteca Profesional de Personajes 2.1 cargada"
 );
+
+
 
 
 
@@ -37,6 +39,7 @@ function renderBibliotecaPersonajes(){
 
 
 const contenedor =
+
 document.getElementById(
 "bibliotecaPersonajes"
 );
@@ -52,6 +55,7 @@ return;
 
 
 const personajes =
+
 crearBasePersonajes();
 
 
@@ -64,7 +68,9 @@ let html = `
 
 
 <button
+
 onclick="nuevoPersonaje()"
+
 >
 
 ➕ Nuevo Personaje
@@ -92,7 +98,6 @@ onkeyup="filtrarPersonajes()"
 
 <div class="listaPersonajes">
 
-
 `;
 
 
@@ -104,7 +109,9 @@ if(personajes.length===0){
 html += `
 
 <p>
-No existen personajes registrados.
+
+No hay personajes registrados.
+
 </p>
 
 `;
@@ -118,6 +125,32 @@ No existen personajes registrados.
 personajes.forEach(personaje=>{
 
 
+
+const color =
+
+personaje.visual?.color ||
+
+"#e67e22";
+
+
+
+const estado =
+
+personaje.produccion?.estado ||
+
+"Activo";
+
+
+
+const imagen =
+
+personaje.visual?.imagen ||
+
+"🎭";
+
+
+
+
 html += `
 
 
@@ -126,17 +159,43 @@ html += `
 
 class="item-personaje tarjetaPersonaje"
 
+style="border-top:8px solid ${color}"
+
 onclick="seleccionarPersonaje('${personaje.id}')"
 
 >
 
 
 
+<div class="imagenPersonaje">
+
+
+${
+
+imagen.startsWith("http")
+
+?
+
+`<img src="${imagen}">`
+
+:
+
+imagen
+
+}
+
+
+</div>
+
+
+
+
 <h3>
 
-🎭 ${personaje.identidad.nombre}
+${personaje.identidad.nombre}
 
 </h3>
+
 
 
 
@@ -196,6 +255,57 @@ personaje.identidad.descripcion ||
 
 
 
+
+<p>
+
+<strong>
+Estado:
+</strong>
+
+🟢 ${estado}
+
+</p>
+
+
+
+
+<button
+
+onclick="event.stopPropagation(); editarPersonaje('${personaje.id}')"
+
+>
+
+✏️ Editar
+
+</button>
+
+
+
+<button
+
+onclick="event.stopPropagation(); eliminarPersonaje('${personaje.id}')"
+
+>
+
+🗑️ Eliminar
+
+</button>
+
+
+
+<button
+
+onclick="event.stopPropagation(); verPreviewPersonaje('${personaje.id}')"
+
+>
+
+👁 Vista previa
+
+</button>
+
+
+
+
 </div>
 
 
@@ -205,7 +315,6 @@ personaje.identidad.descripcion ||
 
 
 });
-
 
 
 
@@ -222,6 +331,8 @@ contenedor.innerHTML = html;
 
 
 }
+
+
 
 
 
@@ -285,25 +396,18 @@ item.innerText
 
 
 
-if(
+item.style.display =
+
+
 contenido.includes(texto)
-){
 
+?
 
-item.style.display =
-"block";
+"block"
 
+:
 
-}
-
-else{
-
-
-item.style.display =
 "none";
-
-
-}
 
 
 
@@ -312,6 +416,8 @@ item.style.display =
 
 
 }
+
+
 
 
 
@@ -358,8 +464,8 @@ id
 
 return;
 
-}
 
+}
 
 
 
@@ -373,12 +479,19 @@ personaje.identidad.nombre
 
 
 
-
 cargarFormularioPersonaje(
 
 personaje
 
 );
+
+
+
+personajeEditando = id;
+
+
+
+verPreviewPersonaje(id);
 
 
 
