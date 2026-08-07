@@ -7,10 +7,10 @@ Archivo:
 app.js
 
 Versión:
-1.2.0
+1.3.0
 
 Entrega:
-008-C
+008-D
 
 Estado:
 CONTROL PRINCIPAL
@@ -31,33 +31,51 @@ INICIAR APLICACIÓN
 function iniciarAplicacion(){
 
 
-console.log(
-"🌭 Longaniza Studio iniciado"
-);
+    console.log(
+        "🌭 Longaniza Studio iniciado"
+    );
 
 
 
-console.log(
-
-"Sistema actual:",
-
-window.LonganizaStudio.sistema
-
-);
+    if(window.LonganizaStudio){
 
 
+        console.log(
 
-configurarMenu();
+            "Sistema actual:",
 
+            window.LonganizaStudio.sistema
+
+        );
+
+
+    }else{
+
+
+        console.error(
+
+            "LonganizaStudio no está inicializado"
+
+        );
+
+
+    }
+
+
+
+    configurarMenu();
 
 
 }
 
 
 
+
+
+
 /*
 ========================================
-CONFIGURAR MENU
+CONFIGURAR MENÚ
 ========================================
 */
 
@@ -66,205 +84,395 @@ function configurarMenu(){
 
 
 
+    /*
+    ========================
+    PROYECTOS
+    ========================
+    */
+
+
+    const btnProyectos =
+
+    document.getElementById(
+        "btnProyectos"
+    );
+
+
+
+    if(btnProyectos){
+
+
+        btnProyectos.onclick = function(){
+
+
+
+            if(typeof renderBibliotecaProyectos === "function"){
+
+
+                renderBibliotecaProyectos();
+
+
+
+            }else{
+
+
+                mostrarModuloPendiente(
+                    "Proyectos"
+                );
+
+
+            }
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+    /*
+    ========================
+    PERSONAJES
+    ========================
+    */
+
+
+    const btnPersonajes =
+
+    document.getElementById(
+        "btnPersonajes"
+    );
+
+
+
+    if(btnPersonajes){
+
+
+        btnPersonajes.onclick = function(){
+
+
+
+            if(typeof mostrarModuloPersonajes === "function"){
+
+
+                mostrarModuloPersonajes();
+
+
+
+            }else{
+
+
+                mostrarModuloPendiente(
+                    "Personajes"
+                );
+
+
+            }
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+    /*
+    ========================
+    HISTORIAS
+    ========================
+    */
+
+
+    const btnHistorias =
+
+    document.getElementById(
+        "btnHistorias"
+    );
+
+
+
+    if(btnHistorias){
+
+
+        btnHistorias.onclick = function(){
+
+
+            mostrarModuloPendiente(
+                "Historias"
+            );
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+    /*
+    ========================
+    ESCENARIOS
+    ========================
+    */
+
+
+    const btnEscenarios =
+
+    document.getElementById(
+        "btnEscenarios"
+    );
+
+
+
+    if(btnEscenarios){
+
+
+        btnEscenarios.onclick = function(){
+
+
+            mostrarModuloPendiente(
+                "Escenarios"
+            );
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+    /*
+    ========================
+    EPISODIOS
+    ========================
+    */
+
+
+    const btnEpisodios =
+
+    document.getElementById(
+        "btnEpisodios"
+    );
+
+
+
+    if(btnEpisodios){
+
+
+        btnEpisodios.onclick = function(){
+
+
+            mostrarModuloPendiente(
+                "Episodios"
+            );
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+    /*
+    ========================
+    AUDIO
+    ========================
+    */
+
+
+    const btnAudio =
+
+    document.getElementById(
+        "btnAudio"
+    );
+
+
+
+    if(btnAudio){
+
+
+        btnAudio.onclick = function(){
+
+
+            mostrarModuloPendiente(
+                "Audio"
+            );
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+    /*
+    ========================
+    CONFIGURACIÓN
+    ========================
+    */
+
+
+    const btnConfiguracion =
+
+    document.getElementById(
+        "btnConfiguracion"
+    );
+
+
+
+    if(btnConfiguracion){
+
+
+        btnConfiguracion.onclick = function(){
+
+
+
+            if(typeof mostrarConfiguracion === "function"){
+
+
+                mostrarConfiguracion();
+
+
+
+            }else{
+
+
+                mostrarModuloPendiente(
+                    "Configuración"
+                );
+
+
+            }
+
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+    console.log(
+
+        "✅ Menú configurado correctamente"
+
+    );
+
+
+
+}
+
+
+
+
+
+
+
+
 /*
-=========================
-PROYECTOS
-=========================
+========================================
+MÓDULOS TEMPORALES
+========================================
 */
 
 
-const btnProyectos =
-
-document.getElementById(
-"btnProyectos"
-);
+function mostrarModuloPendiente(nombreModulo){
 
 
 
-if(btnProyectos){
+    const contenido =
+
+    document.getElementById(
+        "contenido"
+    );
 
 
-btnProyectos.onclick = function(){
+
+    if(!contenido)
+    return;
 
 
-renderBibliotecaProyectos();
+
+    contenido.innerHTML = `
 
 
-};
+        <div class="modulo-pendiente">
+
+
+            <h1>
+            🚧 ${nombreModulo}
+            </h1>
+
+
+
+            <p>
+            Este módulo está preparado
+            para desarrollo.
+            </p>
+
+
+
+            <p>
+            Longaniza Studio continuará
+            creciendo módulo por módulo.
+            </p>
+
+
+        </div>
+
+
+    `;
+
+
+
+    console.log(
+
+        "Módulo pendiente:",
+
+        nombreModulo
+
+    );
+
 
 
 }
 
 
 
-/*
-=========================
-PERSONAJES
-=========================
-*/
 
-
-const btnPersonajes =
-
-document.getElementById(
-"btnPersonajes"
-);
-
-
-
-if(btnPersonajes){
-
-
-btnPersonajes.onclick = function(){
-
-
-mostrarModuloPersonajes();
-
-
-};
-
-
-}
-
-
-
-/*
-=========================
-CONFIGURACION
-=========================
-*/
-
-
-const btnConfiguracion =
-
-document.getElementById(
-"btnConfiguracion"
-);
-
-
-
-if(btnConfiguracion){
-
-
-btnConfiguracion.onclick = function(){
-
-
-mostrarConfiguracion();
-
-
-};
-
-
-}
-
-
-
-/*
-=========================
-HISTORIAS
-=========================
-*/
-
-
-const btnHistorias =
-
-document.getElementById(
-"btnHistorias"
-);
-
-
-
-if(btnHistorias){
-
-
-btnHistorias.onclick = function(){
-
-
-console.log(
-"Módulo Historias pendiente"
-);
-
-
-};
-
-
-}
-
-
-
-/*
-=========================
-ESCENARIOS
-=========================
-*/
-
-
-const btnEscenarios =
-
-document.getElementById(
-"btnEscenarios"
-);
-
-
-
-if(btnEscenarios){
-
-
-btnEscenarios.onclick = function(){
-
-
-console.log(
-"Módulo Escenarios pendiente"
-);
-
-
-};
-
-
-}
-
-
-
-/*
-=========================
-EPISODIOS
-=========================
-*/
-
-
-const btnEpisodios =
-
-document.getElementById(
-"btnEpisodios"
-);
-
-
-
-if(btnEpisodios){
-
-
-btnEpisodios.onclick = function(){
-
-
-console.log(
-"Módulo Episodios pendiente"
-);
-
-
-};
-
-
-}
-
-
-
-console.log(
-"Menú configurado correctamente"
-);
-
-
-
-}
 
 
 
@@ -277,8 +485,8 @@ EVENTO INICIAL
 
 document.addEventListener(
 
-"DOMContentLoaded",
+    "DOMContentLoaded",
 
-iniciarAplicacion
+    iniciarAplicacion
 
 );
