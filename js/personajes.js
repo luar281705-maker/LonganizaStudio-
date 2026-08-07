@@ -1311,7 +1311,144 @@ Math.random()
 
 
 
+/*
+========================================
 
+CAPTURAR DATOS DEL FORMULARIO
+
+========================================
+*/
+
+
+function capturarDatosFormulario(personaje){
+
+
+
+personaje.identidad.nombre =
+
+document.getElementById(
+"nombrePersonaje"
+).value;
+
+
+
+personaje.identidad.tipo =
+
+document.getElementById(
+"tipoPersonaje"
+).value;
+
+
+
+personaje.identidad.rol =
+
+document.getElementById(
+"rolPersonaje"
+).value;
+
+
+
+personaje.identidad.descripcion =
+
+document.getElementById(
+"descripcionPersonaje"
+).value;
+
+
+
+personaje.apariencia.cabello =
+
+document.getElementById(
+"cabelloPersonaje"
+).value;
+
+
+
+personaje.apariencia.colorCabello =
+
+document.getElementById(
+"colorCabelloPersonaje"
+).value;
+
+
+
+personaje.apariencia.ropa =
+
+document.getElementById(
+"ropaPersonaje"
+).value;
+
+
+
+personaje.apariencia.accesorios =
+
+document.getElementById(
+"accesoriosPersonaje"
+).value;
+
+
+
+personaje.personalidad.caracteristicas =
+
+document.getElementById(
+"caracteristicasPersonaje"
+).value;
+
+
+
+personaje.personalidad.formaHablar =
+
+document.getElementById(
+"formaHablarPersonaje"
+).value;
+
+
+
+personaje.personalidad.gustos =
+
+document.getElementById(
+"gustosPersonaje"
+).value;
+
+
+
+personaje.personalidad.defectos =
+
+document.getElementById(
+"defectosPersonaje"
+).value;
+
+
+
+if(document.getElementById("tipoHumorPersonaje")){
+
+
+personaje.personalidad.tipoHumor =
+
+document.getElementById(
+"tipoHumorPersonaje"
+).value;
+
+
+}
+
+
+
+if(document.getElementById("frasesPersonaje")){
+
+
+personaje.personalidad.frasesTipicas =
+
+document.getElementById(
+"frasesPersonaje"
+).value;
+
+
+}
+
+
+
+}
 
 /*
 ========================================
