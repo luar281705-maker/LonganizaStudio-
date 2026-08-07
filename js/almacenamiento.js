@@ -7,25 +7,14 @@ Archivo:
 almacenamiento.js
 
 Versión:
-1.0.0
+1.1.0
 
 Entrega:
-006
+011
 
 Estado:
-SISTEMA DE ALMACENAMIENTO BASE
+ALMACENAMIENTO PROFESIONAL
 
-NO MODIFICAR
-SIN INDICACIÓN.
-
-========================================
-*/
-
-
-
-/*
-========================================
-CLAVE PRINCIPAL
 ========================================
 */
 
@@ -34,54 +23,42 @@ const CLAVE_SISTEMA = "LONGANIZA_STUDIO_DATOS";
 
 
 
-
-
 /*
 ========================================
-ESTRUCTURA BASE DEL SISTEMA
+CREAR SISTEMA BASE
 ========================================
 */
 
-
 function crearSistemaBase(){
-
 
     return {
 
-
         version:"1.0.0",
 
-
         proyectoActivo:null,
-
 
         proyectos:[],
 
 
         configuracion:{
 
-
-            nombre:
-
+            nombreSoftware:
             "Longaniza Studio",
 
+            nombreSerie:
+            "Entre la risa y la longaniza",
 
-            serie:
+            fraseOficial:
+            "Quieren poner paz y la terminan embarrando más.",
 
-            "Entre la risa y la longaniza"
-
+            version:
+            "1.0.0"
 
         }
 
-
     };
 
-
 }
-
-
-
-
 
 
 
@@ -91,24 +68,19 @@ GUARDAR DATOS
 ========================================
 */
 
-
 function guardarDatos(){
-
 
     localStorage.setItem(
 
         CLAVE_SISTEMA,
 
-        JSON.stringify(sistema)
+        JSON.stringify(
+            window.LonganizaStudio.sistema
+        )
 
     );
 
-
 }
-
-
-
-
 
 
 
@@ -118,21 +90,16 @@ CARGAR DATOS
 ========================================
 */
 
-
 function cargarDatos(){
 
-
     const datos =
-
     localStorage.getItem(CLAVE_SISTEMA);
 
 
 
     if(datos){
 
-
         return JSON.parse(datos);
-
 
     }
 
@@ -140,12 +107,7 @@ function cargarDatos(){
 
     return crearSistemaBase();
 
-
 }
-
-
-
-
 
 
 
@@ -155,29 +117,40 @@ BORRAR DATOS
 ========================================
 */
 
-
 function borrarDatos(){
 
-
     localStorage.removeItem(
-
         CLAVE_SISTEMA
-
     );
-
 
 }
 
 
 
+/*
+========================================
+REGISTRAR SISTEMA
+========================================
+*/
+
+window.LonganizaStudio =
+window.LonganizaStudio || {};
+
+
+
+window.LonganizaStudio.sistema =
+cargarDatos();
 
 
 
 /*
 ========================================
-INICIALIZACIÓN
+COMPATIBILIDAD TEMPORAL
+
+Mantiene funcionando módulos
+anteriores mientras migramos.
 ========================================
 */
 
-
-let sistema = cargarDatos();
+let sistema =
+window.LonganizaStudio.sistema;
