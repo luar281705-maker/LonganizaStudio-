@@ -7,16 +7,13 @@ Archivo:
 estilo.css
 
 Versión:
-1.0.0
+1.0.1
 
 Entrega:
-002
+013-C
 
 Estado:
-BASE VISUAL INICIAL
-
-NO MODIFICAR
-SIN INDICACIÓN.
+BASE VISUAL + BIBLIOTECA PERSONAJES
 
 ========================================
 */
@@ -32,76 +29,69 @@ VARIABLES GLOBALES
 :root {
 
 
-    /*
-    Colores principales
-    */
+/*
+Colores principales
+*/
 
-    --color-principal: #e67e22;
+--color-principal:#e67e22;
 
-    --color-secundario: #f1c40f;
+--color-secundario:#f1c40f;
 
-    --color-fondo: #f7f7f7;
+--color-fondo:#f7f7f7;
 
-    --color-panel: #ffffff;
+--color-panel:#ffffff;
 
-    --color-texto: #2c3e50;
+--color-texto:#2c3e50;
 
-    --color-borde: #dddddd;
-
-
-    /*
-    Estados
-    */
-
-    --color-exito: #27ae60;
-
-    --color-error: #c0392b;
+--color-borde:#dddddd;
 
 
-    /*
-    Sombras
-    */
+/*
+Estados
+*/
 
-    --sombra-suave:
+--color-exito:#27ae60;
 
-    0 4px 12px rgba(0,0,0,0.10);
+--color-error:#c0392b;
 
 
+/*
+Sombras
+*/
 
-    /*
-    Bordes
-    */
-
-    --radio:
-
-    10px;
+--sombra-suave:
+0 4px 12px rgba(0,0,0,0.10);
 
 
 
-    /*
-    Espaciados
+/*
+Bordes
+*/
 
-    */
-
-    --espacio:
-
-    20px;
+--radio:10px;
 
 
 
-    /*
-    Tipografía
+/*
+Espaciados
+*/
 
-    */
+--espacio:20px;
 
-    --fuente:
 
-    "Segoe UI",
-    Arial,
-    sans-serif;
+
+/*
+Tipografía
+*/
+
+--fuente:
+"Segoe UI",
+Arial,
+sans-serif;
 
 
 }
+
 
 
 
@@ -116,11 +106,13 @@ RESET GENERAL
 * {
 
 
-    margin:0;
+margin:0;
 
-    padding:0;
 
-    box-sizing:border-box;
+padding:0;
+
+
+box-sizing:border-box;
 
 
 }
@@ -132,9 +124,10 @@ RESET GENERAL
 html {
 
 
-    width:100%;
+width:100%;
 
-    height:100%;
+
+height:100%;
 
 
 }
@@ -146,30 +139,29 @@ html {
 body {
 
 
-    width:100%;
-
-    min-height:100vh;
+width:100%;
 
 
-    font-family:
-
-    var(--fuente);
+min-height:100vh;
 
 
-    background:
+font-family:
 
-    var(--color-fondo);
+var(--fuente);
+
+
+background:
+
+var(--color-fondo);
 
 
 
-    color:
+color:
 
-    var(--color-texto);
-
+var(--color-texto);
 
 
 }
-
 
 
 
@@ -185,18 +177,20 @@ ELEMENTOS GENERALES
 button {
 
 
-    font-family:
+font-family:
 
-    inherit;
-
-
-    cursor:pointer;
+inherit;
 
 
-    border:none;
+cursor:pointer;
+
+
+border:none;
 
 
 }
+
+
 
 
 
@@ -205,12 +199,11 @@ h2,
 h3 {
 
 
-    font-weight:
-
-    700;
+font-weight:700;
 
 
 }
+
 
 
 
@@ -218,12 +211,11 @@ h3 {
 p {
 
 
-    line-height:
-
-    1.6;
+line-height:1.6;
 
 
 }
+
 
 
 
@@ -233,9 +225,7 @@ textarea,
 select {
 
 
-    font-family:
-
-    inherit;
+font-family:inherit;
 
 
 }
@@ -254,43 +244,277 @@ UTILIDADES
 .oculto {
 
 
-    display:none;
+display:none;
 
 
 }
+
+
 
 
 
 .centrado {
 
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
 
-    align-items:center;
+justify-content:center;
+
+
+align-items:center;
 
 
 }
 
 
 
+
+
 .tarjeta {
 
 
-    background:
+background:
 
-    var(--color-panel);
-
-
-    border-radius:
-
-    var(--radio);
+var(--color-panel);
 
 
-    box-shadow:
 
-    var(--sombra-suave);
+border-radius:
+
+var(--radio);
+
+
+
+box-shadow:
+
+var(--sombra-suave);
+
+
+
+}
+
+
+
+
+
+/*
+========================================
+
+BIBLIOTECA PROFESIONAL DE PERSONAJES
+
+ENTREGA 013-C
+
+========================================
+*/
+
+
+
+#bibliotecaPersonajes {
+
+
+width:100%;
+
+
+}
+
+
+
+
+
+.barraPersonajes {
+
+
+display:flex;
+
+
+gap:15px;
+
+
+align-items:center;
+
+
+margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.barraPersonajes button {
+
+
+background:
+
+var(--color-principal);
+
+
+
+color:white;
+
+
+padding:12px 18px;
+
+
+border-radius:8px;
+
+
+font-size:15px;
+
+
+}
+
+
+
+
+
+.barraPersonajes input {
+
+
+flex:1;
+
+
+padding:12px;
+
+
+border-radius:8px;
+
+
+border:1px solid var(--color-borde);
+
+
+font-size:16px;
+
+
+}
+
+
+
+
+
+.listaPersonajes {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(260px,1fr));
+
+
+
+gap:20px;
+
+
+}
+
+
+
+
+
+.item-personaje,
+.tarjetaPersonaje {
+
+
+background:
+
+var(--color-panel);
+
+
+
+border-radius:
+
+15px;
+
+
+
+padding:20px;
+
+
+
+border:
+
+2px solid var(--color-borde);
+
+
+
+box-shadow:
+
+var(--sombra-suave);
+
+
+
+cursor:pointer;
+
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+
+.item-personaje:hover,
+.tarjetaPersonaje:hover {
+
+
+transform:
+
+translateY(-5px);
+
+
+
+border-color:
+
+var(--color-principal);
+
+
+
+}
+
+
+
+
+
+.tarjetaPersonaje h3 {
+
+
+font-size:22px;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.tarjetaPersonaje p {
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.tarjetaPersonaje strong {
+
+
+color:
+
+var(--color-principal);
 
 
 }
