@@ -1,93 +1,259 @@
 /*
 ========================================
+
 LONGANIZA STUDIO
 
-Biblioteca de Personajes
+Biblioteca Profesional de Personajes
 
 Versión:
-0.4.0
+2.0.0
+
+Entrega:
+013-C
+
+Estado:
+BIBLIOTECA PROFESIONAL
+
+========================================
+*/
+
+
+console.log(
+"🎭 Biblioteca Profesional de Personajes cargada"
+);
+
+
+
+
+
+/*
+========================================
+RENDER BIBLIOTECA
 ========================================
 */
 
 
 function renderBibliotecaPersonajes(){
 
+
 const contenedor =
-document.getElementById("bibliotecaPersonajes");
+
+document.getElementById(
+"bibliotecaPersonajes"
+);
+
+
 
 if(!contenedor){
-    return;
+
+return;
+
 }
 
-const proyecto = sistema.proyectoActivo;
 
-if(!proyecto){
 
-    contenedor.innerHTML = `
-        <p>No hay proyecto abierto.</p>
-    `;
 
-    return;
-}
 
-const personajes = crearBasePersonajes();
+const personajes =
+
+crearBasePersonajes();
+
+
+
+
 
 let html = `
 
-<div class="biblioteca-header">
 
-    <h3>🎭 Personajes</h3>
+<div class="cabecera-biblioteca">
 
-    <button onclick="nuevoPersonaje()">
-        ➕
-    </button>
+
+<h2>
+🎭 Personajes
+</h2>
+
+
+
+<button onclick="nuevoPersonaje()">
+
+➕
+
+</button>
+
+
+
+<input
+
+id="buscarPersonaje"
+
+type="text"
+
+placeholder="Buscar personaje..."
+
+onkeyup="filtrarPersonajes()"
+
+>
+
 
 </div>
 
-<input
-id="buscarPersonaje"
-type="text"
-placeholder="Buscar personaje..."
-onkeyup="filtrarPersonajes()"
->
 
-<div
-id="listaBibliotecaPersonajes"
-class="lista-personajes">
+
+<div class="lista-personajes">
+
 
 `;
+
+
+
+
+
+
+
+if(personajes.length===0){
+
+
+html += `
+
+
+<p>
+No existen personajes creados.
+</p>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
 
 personajes.forEach(personaje=>{
 
+
+
 html += `
 
-<div
-class="item-personaje"
-onclick="seleccionarPersonaje(${personaje.id})">
 
-    <div class="nombre">
-        ${personaje.nombre}
-    </div>
 
-    <div class="tipo">
-        ${personaje.tipo}
-    </div>
+<div class="item-personaje"
+
+onclick="seleccionarPersonaje('${personaje.id}')"
+
+>
+
+
+
+<div class="nombre">
+
+
+🎭 ${
+
+personaje.identidad.nombre
+
+}
+
 
 </div>
 
+
+
+
+
+<div class="tipo">
+
+
+Tipo:
+
+${
+
+personaje.identidad.tipo || "Sin definir"
+
+}
+
+
+</div>
+
+
+
+
+
+<div class="rol">
+
+
+Rol:
+
+${
+
+personaje.identidad.rol || "Sin definir"
+
+}
+
+
+</div>
+
+
+
+
+
+<div class="descripcion">
+
+
+${
+
+personaje.identidad.descripcion || ""
+
+}
+
+
+</div>
+
+
+
+
+</div>
+
+
+
 `;
+
+
 
 });
 
+
+
+
+
+
+
 html += `
+
 
 </div>
 
+
 `;
+
+
+
+
 
 contenedor.innerHTML = html;
 
+
+
 }
+
+
+
+
+
 
 
 
@@ -102,11 +268,13 @@ BUSCAR PERSONAJES
 function filtrarPersonajes(){
 
 
+
 const campoBusqueda =
 
 document.getElementById(
 "buscarPersonaje"
 );
+
 
 
 
@@ -118,9 +286,15 @@ return;
 
 
 
+
+
 const texto =
 
-campoBusqueda.value.toLowerCase();
+campoBusqueda.value
+
+.toLowerCase();
+
+
 
 
 
@@ -132,18 +306,26 @@ document.querySelectorAll(
 
 
 
+
+
 items.forEach(item=>{
 
 
-const nombre =
 
-item.innerText.toLowerCase();
+const contenido =
+
+item.innerText
+
+.toLowerCase();
+
+
 
 
 
 item.style.display =
 
-nombre.includes(texto)
+
+contenido.includes(texto)
 
 ?
 
@@ -154,10 +336,16 @@ nombre.includes(texto)
 "none";
 
 
+
 });
 
 
+
 }
+
+
+
+
 
 
 
@@ -173,9 +361,12 @@ SELECCIONAR PERSONAJE
 function seleccionarPersonaje(id){
 
 
+
 const personaje =
 
-crearBasePersonajes().find(
+crearBasePersonajes()
+
+.find(
 
 p=>p.id===id
 
@@ -183,11 +374,20 @@ p=>p.id===id
 
 
 
+
+
 if(!personaje){
+
+console.log(
+"No encontrado:",
+id
+);
 
 return;
 
 }
+
+
 
 
 
@@ -196,6 +396,7 @@ cargarFormularioPersonaje(
 personaje
 
 );
+
 
 
 }
