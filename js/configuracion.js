@@ -7,13 +7,10 @@ Archivo:
 configuracion.js
 
 Versión:
-1.0.0
-
-Entrega:
-009
+1.1.0
 
 Estado:
-MÓDULO DE CONFIGURACIÓN BASE
+CONFIGURACIÓN CENTRAL DEL SISTEMA
 
 NO MODIFICAR
 SIN INDICACIÓN.
@@ -25,12 +22,28 @@ SIN INDICACIÓN.
 
 /*
 ========================================
-CONFIGURACIÓN PRINCIPAL
+CREAR ESPACIO PRINCIPAL
+DEL SISTEMA
 ========================================
 */
 
 
-const configuracionSistema = {
+window.LonganizaStudio =
+
+window.LonganizaStudio || {};
+
+
+
+
+
+/*
+========================================
+CONFIGURACIÓN GENERAL
+========================================
+*/
+
+
+LonganizaStudio.configuracion = {
 
 
     nombreSoftware:
@@ -76,6 +89,7 @@ const configuracionSistema = {
 
 
 
+
 /*
 ========================================
 OBTENER CONFIGURACIÓN
@@ -86,10 +100,11 @@ OBTENER CONFIGURACIÓN
 function obtenerConfiguracion(){
 
 
-    return configuracionSistema;
+    return LonganizaStudio.configuracion;
 
 
 }
+
 
 
 
@@ -108,9 +123,9 @@ function mostrarConfiguracion(){
 
     console.log(
 
-        "⚙ Configuración Longaniza Studio",
+        "⚙ Configuración:",
 
-        configuracionSistema
+        LonganizaStudio.configuracion
 
     );
 
