@@ -6,18 +6,18 @@ Módulo:
 Escenarios
 
 Versión:
-1.0.0
+1.1.0
 
 Entrega:
-014-A
+014-C
 
 Estado:
-SISTEMA BASE DE ESCENARIOS
+ESCENARIOS FUNCIONALES
 ========================================
 */
 
 console.log(
-    "🌎 Módulo Escenarios 1.0 cargado"
+    "🌎 Módulo Escenarios Profesional 1.1 cargado"
 );
 
 
@@ -96,7 +96,7 @@ function mostrarModuloEscenarios(){
     if(!contenido){
 
         console.error(
-            "❌ No existe el contenedor #contenido"
+            "❌ No existe #contenido"
         );
 
         return;
@@ -109,7 +109,8 @@ function mostrarModuloEscenarios(){
         <div class="modulo-escenarios">
 
             <h1>
-                🌎 Biblioteca de Escenarios
+                🌎 Biblioteca Profesional
+                de Escenarios
             </h1>
 
 
@@ -153,12 +154,12 @@ function guardarEscenario(){
 
         actualizarEscenario();
 
-    }
-    else{
-
-        crearEscenario();
+        return;
 
     }
+
+
+    crearEscenario();
 
 }
 
@@ -279,8 +280,14 @@ function crearEscenario(){
     limpiarFormularioEscenario();
 
 
+    escenarioEditando = null;
+
+
+    actualizarBotonGuardarEscenario();
+
+
     alert(
-        "Escenario creado correctamente"
+        "🌎 Escenario creado correctamente"
     );
 
 }
@@ -293,6 +300,17 @@ ACTUALIZAR ESCENARIO
 */
 
 function actualizarEscenario(){
+
+    if(!escenarioEditando){
+
+        console.warn(
+            "No existe un escenario en edición"
+        );
+
+        return;
+
+    }
+
 
     const escenario =
         crearBaseEscenarios()
@@ -322,6 +340,20 @@ function actualizarEscenario(){
     );
 
 
+    if(
+        escenario.nombre
+            .trim() === ""
+    ){
+
+        alert(
+            "El escenario necesita un nombre"
+        );
+
+        return;
+
+    }
+
+
     guardarDatos();
 
 
@@ -338,73 +370,8 @@ function actualizarEscenario(){
 
 
     alert(
-        "Escenario actualizado correctamente"
+        "🌎 Escenario actualizado correctamente"
     );
-
-}
-
-
-/*
-========================================
-ELIMINAR ESCENARIO
-========================================
-*/
-
-function eliminarEscenario(id){
-
-    const confirmar =
-        confirm(
-            "¿Eliminar este escenario?"
-        );
-
-
-    if(!confirmar){
-
-        return;
-
-    }
-
-
-    const escenarios =
-        crearBaseEscenarios();
-
-
-    const indice =
-        escenarios.findIndex(
-
-            escenario =>
-
-                escenario.id === id
-
-        );
-
-
-    if(indice === -1){
-
-        return;
-
-    }
-
-
-    escenarios.splice(
-        indice,
-        1
-    );
-
-
-    guardarDatos();
-
-
-    renderBibliotecaEscenarios();
-
-
-    limpiarFormularioEscenario();
-
-
-    escenarioEditando = null;
-
-
-    actualizarBotonGuardarEscenario();
 
 }
 
@@ -460,6 +427,87 @@ function editarEscenario(id){
 
     });
 
+
+    console.log(
+        "✏️ Editando escenario:",
+        escenario.nombre
+    );
+
+}
+
+
+/*
+========================================
+ELIMINAR ESCENARIO
+========================================
+*/
+
+function eliminarEscenario(id){
+
+    const confirmar =
+        confirm(
+            "¿Eliminar este escenario?"
+        );
+
+
+    if(!confirmar){
+
+        return;
+
+    }
+
+
+    const escenarios =
+        crearBaseEscenarios();
+
+
+    const indice =
+        escenarios.findIndex(
+
+            escenario =>
+
+                escenario.id === id
+
+        );
+
+
+    if(indice === -1){
+
+        return;
+
+    }
+
+
+    const eliminado =
+        escenarios[indice];
+
+
+    escenarios.splice(
+        indice,
+        1
+    );
+
+
+    guardarDatos();
+
+
+    renderBibliotecaEscenarios();
+
+
+    limpiarFormularioEscenario();
+
+
+    escenarioEditando = null;
+
+
+    actualizarBotonGuardarEscenario();
+
+
+    alert(
+        "🗑 Escenario eliminado: " +
+        eliminado.nombre
+    );
+
 }
 
 
@@ -490,8 +538,8 @@ function verPreviewEscenario(id){
 
 
     console.log(
-        "🌎 Escenario seleccionado:",
-        escenario.nombre
+        "👁 Vista previa:",
+        escenario
     );
 
 }
@@ -532,6 +580,7 @@ LISTAR ESCENARIOS
 function listarEscenarios(){
 
     console.log(
+        "🌎 Escenarios:",
         crearBaseEscenarios()
     );
 
