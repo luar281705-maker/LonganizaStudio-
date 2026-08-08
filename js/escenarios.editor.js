@@ -2,13 +2,13 @@
 ========================================
 LONGANIZA STUDIO
 
-Editor de Escenarios
+Editor Profesional de Escenarios
 
 Versión:
-1.0.0
+1.1.0
 
 Entrega:
-014-A
+014-C.2
 ========================================
 */
 
@@ -16,7 +16,7 @@ let escenarioEditando = null;
 
 
 console.log(
-    "🌎 Editor de Escenarios cargado"
+    "🌎 Editor Profesional de Escenarios 1.1 cargado"
 );
 
 
@@ -36,6 +36,10 @@ function mostrarFormularioEscenario(){
 
     if(!editor){
 
+        console.error(
+            "❌ No existe #editorEscenario"
+        );
+
         return;
 
     }
@@ -52,24 +56,28 @@ function mostrarFormularioEscenario(){
 
             <input
                 id="nombreEscenario"
+                type="text"
                 placeholder="Nombre del escenario"
             >
 
 
             <input
                 id="tipoEscenario"
+                type="text"
                 placeholder="Tipo de escenario"
             >
 
 
             <input
                 id="ubicacionEscenario"
+                type="text"
                 placeholder="Ubicación"
             >
 
 
             <input
                 id="ambienteEscenario"
+                type="text"
                 placeholder="Ambiente"
             >
 
@@ -82,7 +90,8 @@ function mostrarFormularioEscenario(){
 
             <input
                 id="imagenEscenario"
-                placeholder="URL de imagen"
+                type="text"
+                placeholder="URL de imagen (opcional)"
             >
 
 
@@ -91,15 +100,15 @@ function mostrarFormularioEscenario(){
             >
 
                 <option value="Activo">
-                    Activo
+                    🟢 Activo
                 </option>
 
                 <option value="En desarrollo">
-                    En desarrollo
+                    🟡 En desarrollo
                 </option>
 
                 <option value="Inactivo">
-                    Inactivo
+                    🔴 Inactivo
                 </option>
 
             </select>
@@ -111,9 +120,7 @@ function mostrarFormularioEscenario(){
                     id="btnGuardarEscenario"
                     onclick="guardarEscenario()"
                 >
-
                     💾 Guardar Escenario
-
                 </button>
 
 
@@ -121,9 +128,7 @@ function mostrarFormularioEscenario(){
                     type="button"
                     onclick="nuevoEscenario()"
                 >
-
                     ➕ Nuevo Escenario
-
                 </button>
 
             </div>
@@ -144,6 +149,13 @@ CAPTURAR DATOS
 function capturarDatosFormularioEscenario(
     escenario
 ){
+
+    if(!escenario){
+
+        return;
+
+    }
+
 
     const nombre =
         document.getElementById(
@@ -188,45 +200,45 @@ function capturarDatosFormularioEscenario(
 
 
     escenario.nombre =
-        nombre ?
-            nombre.value :
-            "";
+        nombre
+            ? nombre.value.trim()
+            : "";
 
 
     escenario.tipo =
-        tipo ?
-            tipo.value :
-            "";
+        tipo
+            ? tipo.value.trim()
+            : "";
 
 
     escenario.ubicacion =
-        ubicacion ?
-            ubicacion.value :
-            "";
+        ubicacion
+            ? ubicacion.value.trim()
+            : "";
 
 
     escenario.ambiente =
-        ambiente ?
-            ambiente.value :
-            "";
+        ambiente
+            ? ambiente.value.trim()
+            : "";
 
 
     escenario.descripcion =
-        descripcion ?
-            descripcion.value :
-            "";
+        descripcion
+            ? descripcion.value.trim()
+            : "";
 
 
     escenario.imagen =
-        imagen ?
-            imagen.value :
-            "";
+        imagen
+            ? imagen.value.trim()
+            : "";
 
 
     escenario.estado =
-        estado ?
-            estado.value :
-            "Activo";
+        estado
+            ? estado.value
+            : "Activo";
 
 }
 
@@ -240,6 +252,13 @@ CARGAR ESCENARIO
 function cargarFormularioEscenario(
     escenario
 ){
+
+    if(!escenario){
+
+        return;
+
+    }
+
 
     const nombre =
         document.getElementById(
@@ -343,7 +362,7 @@ function cargarFormularioEscenario(
 
 /*
 ========================================
-LIMPIAR
+LIMPIAR FORMULARIO
 ========================================
 */
 
@@ -367,6 +386,7 @@ function limpiarFormularioEscenario(){
 
 
     campos.forEach(
+
         id => {
 
             const elemento =
@@ -382,6 +402,7 @@ function limpiarFormularioEscenario(){
             }
 
         }
+
     );
 
 
@@ -416,6 +437,19 @@ function nuevoEscenario(){
 
 
     actualizarBotonGuardarEscenario();
+
+
+    const nombre =
+        document.getElementById(
+            "nombreEscenario"
+        );
+
+
+    if(nombre){
+
+        nombre.focus();
+
+    }
 
 }
 
