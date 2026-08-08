@@ -240,15 +240,28 @@ function configurarMenu(){
     if(btnEscenarios){
 
 
-        btnEscenarios.onclick = function(){
+      /*
+========================
+ESCENARIOS
+========================
+*/
+
+const btnEscenarios =
+
+    document.getElementById(
+        "btnEscenarios"
+    );
 
 
-            mostrarModuloPendiente(
-                "Escenarios"
-            );
+if(btnEscenarios){
 
+    btnEscenarios.onclick = function(){
 
-        };
+        mostrarModuloEscenarios();
+
+    };
+
+}
 
 
     }
